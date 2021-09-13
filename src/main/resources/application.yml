@@ -1,0 +1,28 @@
+server:
+  port: 8081
+openProject:
+  isOpen: true
+  cmd: cmd /c start
+  openUrl: http://localhost:${server.port}/index.html
+logging:
+  #level 日志等级 指定命名空间的日志输出
+  level:
+    com.fishpro.log: debug
+  #file 指定输出文件的存储路径
+  file: logs/app.log
+  #pattern 指定输出场景的日志输出格式
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+spring:
+  servlet:
+    multipart:
+     # 文件最大限制
+      max-file-size: 1024MB
+      # 请求最大限制
+      max-request-size: 1024MB
+      enabled: true
+      # 设置文件缓存的临界点,超过则先保存到临时目录,默认为0,所有文件都会进行缓存
+      file-size-threshold: 0
+
+
