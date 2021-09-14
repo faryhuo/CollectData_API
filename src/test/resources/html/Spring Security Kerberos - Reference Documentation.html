@@ -1,0 +1,871 @@
+
+<!-- saved from url=(0128)https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth-xml -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>Spring Security Kerberos - Reference Documentation</title><link rel="stylesheet" type="text/css" href="./Spring Security Kerberos - Reference Documentation_files/manual-singlepage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div lang="en" class="book"><div class="titlepage"><div><div><h1 class="title"><a name="d5e1"></a>Spring Security Kerberos - Reference Documentation</h1></div><div><div class="authorgroup"><h2>Authors</h2>
+<span class="author"><span class="firstname">Janne</span> <span class="surname">Valkealahti</span></span>
+</div></div><div><p class="releaseinfo">1.0.1.RELEASE</p></div><div><p class="copyright">Copyright © 2015 Pivotal Software, Inc.</p></div><div><div class="legalnotice"><a name="d5e15" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#d5e15"></a>
+<p>Copies of this document may be made for your own use and for
+distribution to others, provided that you do not charge any fee for such
+copies and further provided that each copy contains this Copyright
+Notice, whether distributed in print or electronically.</p>
+</div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="preface"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#preface">Preface</a></span></dt><dt><span class="part"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#introduction">I. Introduction</a></span></dt><dd><dl><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#requirements">1. Requirements</a></span></dt></dl></dd><dt><span class="part"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#springsecuritykerberos">II. Spring and Spring Security Kerberos</a></span></dt><dd><dl><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-authprovider">2. Authentication Provider</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-spnego">3. Spnego Negotiate</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-resttemplate">4. Using KerberosRestTemplate</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-kerberosldap">5. Authentication with LDAP Services</a></span></dt></dl></dd><dt><span class="part"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#springsecuritykerberossamples">III. Spring Security Kerberos Samples</a></span></dt><dd><dl><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-win-auth">6. Security Server Windows Auth Sample</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-client-auth">7. Security Server Side Auth Sample</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth">8. Security Server Spnego and Form Auth Sample</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth-xml">9. Security Server Spnego and Form Auth Xml Sample</a></span></dt><dt><span class="chapter"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-client-rest-template">10. Security Client KerberosRestTemplate Sample</a></span></dt></dl></dd><dt><span class="part"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#appendices">IV. Appendices</a></span></dt><dd><dl><dt><span class="appendix"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#material-used-in-this-document">A. Material Used in this Document</a></span></dt><dt><span class="appendix"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#crash-course-to-kerberos">B. Crash Course to Kerberos</a></span></dt><dt><span class="appendix"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setup-kerberos-environments">C. Setup Kerberos Environments</a></span></dt><dd><dl><dt><span class="section"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupmitkerberos">C.1. Setup MIT Kerberos</a></span></dt><dt><span class="section"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupwinkerberos">C.2. Setup Windows Domain Controller</a></span></dt></dl></dd><dt><span class="appendix"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#troubleshooting">D. Troubleshooting</a></span></dt><dt><span class="appendix"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#browserspnegoconfig">E. Configure Browsers for Spnego Negotiation</a></span></dt><dd><dl><dt><span class="section"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#firefox">E.1. Firefox</a></span></dt><dt><span class="section"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#chrome">E.2. Chrome</a></span></dt><dt><span class="section"><a href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#internet-explorer">E.3. Internet Explorer</a></span></dt></dl></dd></dl></dd></dl></div>
+<div class="preface"><div class="titlepage"><div><div><h1 class="title"><a name="preface" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#preface"></a>Preface</h1></div></div></div>
+<p>This reference documentations contains following parts.</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#introduction" title="Part I. Introduction">Part&nbsp;I, “Introduction”</a> introduction to this reference documentation</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#springsecuritykerberos" title="Part II. Spring and Spring Security Kerberos">Part&nbsp;II, “Spring and Spring Security Kerberos”</a> describes the usage of Spring Security
+Kerberos</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#springsecuritykerberossamples" title="Part III. Spring Security Kerberos Samples">Part&nbsp;III, “Spring Security Kerberos Samples”</a> describes the usage of Spring
+Security Kerberos Samples</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#appendices" title="Part IV. Appendices">Part&nbsp;IV, “Appendices”</a> generic support material</p>
+</div>
+<div class="part"><div class="titlepage"><div><div><h1 class="title"><a name="introduction" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#introduction"></a>Part&nbsp;I.&nbsp;Introduction</h1></div></div></div>
+<div class="partintro"><div></div>
+<p>Spring Security Kerberos is an extension of Spring Security for
+application developers to Kerberos concepts with Spring.</p>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="requirements" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#requirements"></a>1.&nbsp;Requirements</h2></div></div></div>
+<p>Spring Security Kerberos 1.0.1.RELEASE is built and tested with JDK 7,
+Spring Security 3.2.7.RELEASE and Spring Framework 4.1.6.RELEASE.</p>
+</div>
+</div>
+<div class="part"><div class="titlepage"><div><div><h1 class="title"><a name="springsecuritykerberos" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#springsecuritykerberos"></a>Part&nbsp;II.&nbsp;Spring and Spring Security Kerberos</h1></div></div></div>
+<div class="partintro"><div></div>
+<p>This part of the reference documentation explains the core functionality
+that Spring Security Kerberos provides to any Spring based application.</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-authprovider" title="2. Authentication Provider">Chapter&nbsp;2, <i>Authentication Provider</i></a> describes the authentication provider support.</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-spnego" title="3. Spnego Negotiate">Chapter&nbsp;3, <i>Spnego Negotiate</i></a> describes the spnego negotiate support.</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-resttemplate" title="4. Using KerberosRestTemplate">Chapter&nbsp;4, <i>Using KerberosRestTemplate</i></a> describes the RestTemplate support.</p>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="ssk-authprovider" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-authprovider"></a>2.&nbsp;Authentication Provider</h2></div></div></div>
+<p>Provider configuration using JavaConfig.</p>
+<pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@Configuration</span></em>
+<em><span class="hl-annotation" style="color: gray">@EnableWebMvcSecurity</span></em>
+<span class="hl-keyword">public</span> <span class="hl-keyword">class</span> AuthProviderConfig <span class="hl-keyword">extends</span> WebSecurityConfigurerAdapter {
+
+    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">void</span> configure(HttpSecurity http) <span class="hl-keyword">throws</span> Exception {
+        http
+            .authorizeRequests()
+                .antMatchers(<span class="hl-string">"/"</span>, <span class="hl-string">"/home"</span>).permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage(<span class="hl-string">"/login"</span>).permitAll()
+                .and()
+            .logout()
+                .permitAll();
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">void</span> configure(AuthenticationManagerBuilder auth) <span class="hl-keyword">throws</span> Exception {
+        auth
+            .authenticationProvider(kerberosAuthenticationProvider());
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> KerberosAuthenticationProvider kerberosAuthenticationProvider() {
+        KerberosAuthenticationProvider provider =
+        		<span class="hl-keyword">new</span> KerberosAuthenticationProvider();
+        SunJaasKerberosClient client = <span class="hl-keyword">new</span> SunJaasKerberosClient();
+        client.setDebug(true);
+        provider.setKerberosClient(client);
+        provider.setUserDetailsService(dummyUserDetailsService());
+        <span class="hl-keyword">return</span> provider;
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> DummyUserDetailsService dummyUserDetailsService() {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> DummyUserDetailsService();
+    }
+
+}</pre>
+<p>Provider configuration using xml.</p>
+<pre class="programlisting"><span class="hl-tag">&lt;beans</span> <span class="hl-attribute">xmlns</span>=<span class="hl-value">"http://www.springframework.org/schema/beans"</span>
+  <span class="hl-attribute">xmlns:xsi</span>=<span class="hl-value">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="hl-attribute">xmlns:sec</span>=<span class="hl-value">"http://www.springframework.org/schema/security"</span>
+  <span class="hl-attribute">xmlns:context</span>=<span class="hl-value">"http://www.springframework.org/schema/context"</span>
+  <span class="hl-attribute">xsi:schemaLocation</span>=<span class="hl-value">"
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="hl-tag">&gt;</span>
+
+  <span class="hl-tag">&lt;sec:http</span> <span class="hl-attribute">entry-point-ref</span>=<span class="hl-value">"spnegoEntryPoint"</span> <span class="hl-attribute">use-expressions</span>=<span class="hl-value">"true"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"permitAll"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/home"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"permitAll"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/**"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"authenticated"</span><span class="hl-tag">/&gt;</span>
+  <span class="hl-tag">&lt;/sec:http&gt;</span>
+
+  <span class="hl-tag">&lt;sec:authentication-manager</span> <span class="hl-attribute">alias</span>=<span class="hl-value">"authenticationManager"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;sec:authentication-provider</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"kerberosAuthenticationProvider"</span><span class="hl-tag">/&gt;</span>
+  <span class="hl-tag">&lt;/sec:authentication-manager&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"kerberosAuthenticationProvider"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.KerberosAuthenticationProvider"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"kerberosClient"</span><span class="hl-tag">&gt;</span>
+      <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.sun.SunJaasKerberosClient"</span><span class="hl-tag">&gt;</span>
+        <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"debug"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"true"</span><span class="hl-tag">/&gt;</span>
+      <span class="hl-tag">&lt;/bean&gt;</span>
+    <span class="hl-tag">&lt;/property&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"userDetailsService"</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"dummyUserDetailsService"</span><span class="hl-tag">/&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.sun.GlobalSunJaasKerberosConfig"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"debug"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"true"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"krbConfLocation"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"/path/to/krb5.ini"</span><span class="hl-tag">/&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"dummyUserDetailsService"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.docs.DummyUserDetailsService"</span><span class="hl-tag"> /&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"spnegoEntryPoint"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.web.authentication.SpnegoEntryPoint"</span><span class="hl-tag"> &gt;</span>
+    <span class="hl-tag">&lt;constructor-arg</span> <span class="hl-attribute">value</span>=<span class="hl-value">"/login"</span><span class="hl-tag"> /&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+<span class="hl-tag">&lt;/beans&gt;</span></pre>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="ssk-spnego" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-spnego"></a>3.&nbsp;Spnego Negotiate</h2></div></div></div>
+<p>Spnego configuration using JavaConfig.</p>
+<pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@Configuration</span></em>
+<em><span class="hl-annotation" style="color: gray">@EnableWebMvcSecurity</span></em>
+<span class="hl-keyword">public</span> <span class="hl-keyword">class</span> SpnegoConfig <span class="hl-keyword">extends</span> WebSecurityConfigurerAdapter {
+
+    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">void</span> configure(HttpSecurity http) <span class="hl-keyword">throws</span> Exception {
+        http
+            .exceptionHandling()
+                .authenticationEntryPoint(spnegoEntryPoint())
+                .and()
+            .authorizeRequests()
+                .antMatchers(<span class="hl-string">"/"</span>, <span class="hl-string">"/home"</span>).permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage(<span class="hl-string">"/login"</span>).permitAll()
+                .and()
+            .logout()
+                .permitAll()
+                .and()
+            .addFilterBefore(
+                    spnegoAuthenticationProcessingFilter(authenticationManagerBean()),
+                    BasicAuthenticationFilter.<span class="hl-keyword">class</span>);
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">void</span> configure(AuthenticationManagerBuilder auth)
+    		<span class="hl-keyword">throws</span> Exception {
+        auth
+            .authenticationProvider(kerberosAuthenticationProvider())
+            .authenticationProvider(kerberosServiceAuthenticationProvider());
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> KerberosAuthenticationProvider kerberosAuthenticationProvider() {
+        KerberosAuthenticationProvider provider =
+        		<span class="hl-keyword">new</span> KerberosAuthenticationProvider();
+        SunJaasKerberosClient client = <span class="hl-keyword">new</span> SunJaasKerberosClient();
+        client.setDebug(true);
+        provider.setKerberosClient(client);
+        provider.setUserDetailsService(dummyUserDetailsService());
+        <span class="hl-keyword">return</span> provider;
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> SpnegoEntryPoint spnegoEntryPoint() {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> SpnegoEntryPoint(<span class="hl-string">"/login"</span>);
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> SpnegoAuthenticationProcessingFilter spnegoAuthenticationProcessingFilter(
+            AuthenticationManager authenticationManager) {
+        SpnegoAuthenticationProcessingFilter filter =
+        		<span class="hl-keyword">new</span> SpnegoAuthenticationProcessingFilter();
+        filter.setAuthenticationManager(authenticationManager);
+        <span class="hl-keyword">return</span> filter;
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> KerberosServiceAuthenticationProvider kerberosServiceAuthenticationProvider() {
+        KerberosServiceAuthenticationProvider provider =
+        		<span class="hl-keyword">new</span> KerberosServiceAuthenticationProvider();
+        provider.setTicketValidator(sunJaasKerberosTicketValidator());
+        provider.setUserDetailsService(dummyUserDetailsService());
+        <span class="hl-keyword">return</span> provider;
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> SunJaasKerberosTicketValidator sunJaasKerberosTicketValidator() {
+        SunJaasKerberosTicketValidator ticketValidator =
+        		<span class="hl-keyword">new</span> SunJaasKerberosTicketValidator();
+        ticketValidator.setServicePrincipal(<span class="hl-string">"HTTP/servicehost.example.org@EXAMPLE.ORG"</span>);
+        ticketValidator.setKeyTabLocation(<span class="hl-keyword">new</span> FileSystemResource(<span class="hl-string">"/tmp/service.keytab"</span>));
+        ticketValidator.setDebug(true);
+        <span class="hl-keyword">return</span> ticketValidator;
+    }
+
+    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+    <span class="hl-keyword">public</span> DummyUserDetailsService dummyUserDetailsService() {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> DummyUserDetailsService();
+    }
+
+}</pre>
+<p>Spnego configuration using xml.</p>
+<pre class="programlisting"><span class="hl-tag">&lt;beans</span> <span class="hl-attribute">xmlns</span>=<span class="hl-value">"http://www.springframework.org/schema/beans"</span>
+  <span class="hl-attribute">xmlns:xsi</span>=<span class="hl-value">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="hl-attribute">xmlns:sec</span>=<span class="hl-value">"http://www.springframework.org/schema/security"</span>
+  <span class="hl-attribute">xmlns:context</span>=<span class="hl-value">"http://www.springframework.org/schema/context"</span>
+  <span class="hl-attribute">xsi:schemaLocation</span>=<span class="hl-value">"http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd"</span><span class="hl-tag">&gt;</span>
+
+  <span class="hl-tag">&lt;sec:http</span> <span class="hl-attribute">entry-point-ref</span>=<span class="hl-value">"spnegoEntryPoint"</span> <span class="hl-attribute">use-expressions</span>=<span class="hl-value">"true"</span><span class="hl-tag"> &gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"permitAll"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/home"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"permitAll"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/login"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"permitAll"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:intercept-url</span> <span class="hl-attribute">pattern</span>=<span class="hl-value">"/**"</span> <span class="hl-attribute">access</span>=<span class="hl-value">"authenticated"</span><span class="hl-tag">/&gt;</span>
+    <span class="hl-tag">&lt;sec:form-login</span> <span class="hl-attribute">login-page</span>=<span class="hl-value">"/login"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:custom-filter</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"spnegoAuthenticationProcessingFilter"</span>
+      <span class="hl-attribute">before</span>=<span class="hl-value">"BASIC_AUTH_FILTER"</span><span class="hl-tag"> /&gt;</span>
+  <span class="hl-tag">&lt;/sec:http&gt;</span>
+
+  <span class="hl-tag">&lt;sec:authentication-manager</span> <span class="hl-attribute">alias</span>=<span class="hl-value">"authenticationManager"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;sec:authentication-provider</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"kerberosAuthenticationProvider"</span><span class="hl-tag"> /&gt;</span>
+    <span class="hl-tag">&lt;sec:authentication-provider</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"kerberosServiceAuthenticationProvider"</span><span class="hl-tag"> /&gt;</span>
+  <span class="hl-tag">&lt;/sec:authentication-manager&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"kerberosAuthenticationProvider"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.KerberosAuthenticationProvider"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"userDetailsService"</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"dummyUserDetailsService"</span><span class="hl-tag">/&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"kerberosClient"</span><span class="hl-tag">&gt;</span>
+      <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.sun.SunJaasKerberosClient"</span><span class="hl-tag">&gt;</span>
+        <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"debug"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"true"</span><span class="hl-tag">/&gt;</span>
+      <span class="hl-tag">&lt;/bean&gt;</span>
+    <span class="hl-tag">&lt;/property&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"spnegoEntryPoint"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.web.authentication.SpnegoEntryPoint"</span><span class="hl-tag"> &gt;</span>
+    <span class="hl-tag">&lt;constructor-arg</span> <span class="hl-attribute">value</span>=<span class="hl-value">"/login"</span><span class="hl-tag"> /&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"spnegoAuthenticationProcessingFilter"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.web.authentication.SpnegoAuthenticationProcessingFilter"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"authenticationManager"</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"authenticationManager"</span><span class="hl-tag"> /&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"kerberosServiceAuthenticationProvider"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.KerberosServiceAuthenticationProvider"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"ticketValidator"</span><span class="hl-tag">&gt;</span>
+      <span class="hl-tag">&lt;bean</span>
+        <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.authentication.sun.SunJaasKerberosTicketValidator"</span><span class="hl-tag">&gt;</span>
+        <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"servicePrincipal"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"${app.service-principal}"</span><span class="hl-tag"> /&gt;</span>
+        <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"keyTabLocation"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"${app.keytab-location}"</span><span class="hl-tag"> /&gt;</span>
+        <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"debug"</span> <span class="hl-attribute">value</span>=<span class="hl-value">"true"</span><span class="hl-tag"> /&gt;</span>
+      <span class="hl-tag">&lt;/bean&gt;</span>
+    <span class="hl-tag">&lt;/property&gt;</span>
+    <span class="hl-tag">&lt;property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"userDetailsService"</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"dummyUserDetailsService"</span><span class="hl-tag"> /&gt;</span>
+  <span class="hl-tag">&lt;/bean&gt;</span>
+
+  <span class="hl-tag">&lt;bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"dummyUserDetailsService"</span>
+    <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.security.kerberos.docs.DummyUserDetailsService"</span><span class="hl-tag"> /&gt;</span>
+
+<span class="hl-tag">&lt;/beans&gt;</span></pre>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="ssk-resttemplate" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-resttemplate"></a>4.&nbsp;Using KerberosRestTemplate</h2></div></div></div>
+<p>If there is a need to access Kerberos protected web resources
+programmatically we have <code class="literal">KerberosRestTemplate</code> which extends
+<code class="literal">RestTemplate</code> and does necessary login actions prior to delegating to
+actual RestTemplate methods. You basically have few options to
+configure this template.</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Leave keyTabLocation and userPrincipal empty if you want to
+use cached ticket.
+</li><li class="listitem">
+Use keyTabLocation and userPrincipal if you want to use
+keytab file.
+</li><li class="listitem">
+Use loginOptions if you want to customise Krb5LoginModule options.
+</li><li class="listitem">
+Use a customised httpClient.
+</li></ul></div>
+<p>With ticket cache.</p>
+<pre class="programlisting"><span class="hl-keyword">public</span> <span class="hl-keyword">void</span> doWithTicketCache() {
+    KerberosRestTemplate restTemplate =
+            <span class="hl-keyword">new</span> KerberosRestTemplate();
+    restTemplate.getForObject(<span class="hl-string">"http://neo.example.org:8080/hello"</span>, String.<span class="hl-keyword">class</span>);
+}</pre>
+<p>With keytab file.</p>
+<pre class="programlisting"><span class="hl-keyword">public</span> <span class="hl-keyword">void</span> doWithKeytabFile() {
+    KerberosRestTemplate restTemplate =
+            <span class="hl-keyword">new</span> KerberosRestTemplate(<span class="hl-string">"/tmp/user2.keytab"</span>, <span class="hl-string">"user2@EXAMPLE.ORG"</span>);
+    restTemplate.getForObject(<span class="hl-string">"http://neo.example.org:8080/hello"</span>, String.<span class="hl-keyword">class</span>);
+}</pre>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="ssk-kerberosldap" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#ssk-kerberosldap"></a>5.&nbsp;Authentication with LDAP Services</h2></div></div></div>
+<p>With most of your samples we’re using <code class="literal">DummyUserDetailsService</code>
+because there is not necessarily need to query a real user details
+once kerberos authentication is successful and we can use kerberos
+principal info to create that dummy user. However there is a way to
+access kerberized LDAP services in a say way and query user details
+from there.</p>
+<p><code class="literal">KerberosLdapContextSource</code> can be used to bind into LDAP via kerberos
+which is at least proven to work well with Windows AD services.</p>
+<pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@Value("${app.ad-server}")</span></em>
+<span class="hl-keyword">private</span> String adServer;
+
+<em><span class="hl-annotation" style="color: gray">@Value("${app.service-principal}")</span></em>
+<span class="hl-keyword">private</span> String servicePrincipal;
+
+<em><span class="hl-annotation" style="color: gray">@Value("${app.keytab-location}")</span></em>
+<span class="hl-keyword">private</span> String keytabLocation;
+
+<em><span class="hl-annotation" style="color: gray">@Value("${app.ldap-search-base}")</span></em>
+<span class="hl-keyword">private</span> String ldapSearchBase;
+
+<em><span class="hl-annotation" style="color: gray">@Value("${app.ldap-search-filter}")</span></em>
+<span class="hl-keyword">private</span> String ldapSearchFilter;
+
+<em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+<span class="hl-keyword">public</span> KerberosLdapContextSource kerberosLdapContextSource() {
+    KerberosLdapContextSource contextSource = <span class="hl-keyword">new</span> KerberosLdapContextSource(adServer);
+    SunJaasKrb5LoginConfig loginConfig = <span class="hl-keyword">new</span> SunJaasKrb5LoginConfig();
+    loginConfig.setKeyTabLocation(<span class="hl-keyword">new</span> FileSystemResource(keytabLocation));
+    loginConfig.setServicePrincipal(servicePrincipal);
+    loginConfig.setDebug(true);
+    loginConfig.setIsInitiator(true);
+    contextSource.setLoginConfig(loginConfig);
+    <span class="hl-keyword">return</span> contextSource;
+}
+
+<em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+<span class="hl-keyword">public</span> LdapUserDetailsService ldapUserDetailsService() {
+    FilterBasedLdapUserSearch userSearch =
+            <span class="hl-keyword">new</span> FilterBasedLdapUserSearch(ldapSearchBase, ldapSearchFilter, kerberosLdapContextSource());
+    LdapUserDetailsService service = <span class="hl-keyword">new</span> LdapUserDetailsService(userSearch);
+    service.setUserDetailsMapper(<span class="hl-keyword">new</span> LdapUserDetailsMapper());
+    <span class="hl-keyword">return</span> service;
+}</pre>
+<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="./Spring Security Kerberos - Reference Documentation_files/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top">
+<p>Sample <a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-win-auth" title="6. Security Server Windows Auth Sample">Chapter&nbsp;6, <i>Security Server Windows Auth Sample</i></a> is currently configured to
+query user details from AD if authentication happen via kerberos.</p>
+</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="part"><div class="titlepage"><div><div><h1 class="title"><a name="springsecuritykerberossamples" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#springsecuritykerberossamples"></a>Part&nbsp;III.&nbsp;Spring Security Kerberos Samples</h1></div></div></div>
+<div class="partintro"><div></div>
+<p>This part of the reference documentation is introducing samples
+projects. Samples can be compiled manually by building main
+distribution from
+<a class="ulink" href="https://github.com/spring-projects/spring-security-kerberos" target="_top">https://github.com/spring-projects/spring-security-kerberos</a>.</p>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="./Spring Security Kerberos - Reference Documentation_files/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top">
+<p>If you run sample as is it will not work until a correct configuration
+is applied. See notes below for specific samples.</p>
+</td></tr></tbody></table></div>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-win-auth" title="6. Security Server Windows Auth Sample">Chapter&nbsp;6, <i>Security Server Windows Auth Sample</i></a> sample for Windows environment</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-client-auth" title="7. Security Server Side Auth Sample">Chapter&nbsp;7, <i>Security Server Side Auth Sample</i></a> sample using server side authenticator</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth" title="8. Security Server Spnego and Form Auth Sample">Chapter&nbsp;8, <i>Security Server Spnego and Form Auth Sample</i></a> sample using ticket validation
+with spnego and form</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth-xml" title="9. Security Server Spnego and Form Auth Xml Sample">Chapter&nbsp;9, <i>Security Server Spnego and Form Auth Xml Sample</i></a> sample using ticket
+validation with spnego and form (xml config)</p>
+<p><a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-client-rest-template" title="10. Security Client KerberosRestTemplate Sample">Chapter&nbsp;10, <i>Security Client KerberosRestTemplate Sample</i></a> sample for KerberosRestTemplate</p>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="samples-sec-server-win-auth" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-win-auth"></a>6.&nbsp;Security Server Windows Auth Sample</h2></div></div></div>
+<p>Goals of this sample:</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+In windows environment, User will be able to logon to application
+with Windows Active directory Credential which has been entered
+during log on to windows. There should not be any ask for
+userid/password credentials.
+</li><li class="listitem">
+In non-windows environment, User will be presented with a screen
+to provide Active directory credentials.
+</li></ul></div>
+<pre class="programlisting">server:
+    port: 8080
+    app:
+        ad-domain: EXAMPLE.ORG
+        ad-server: ldap://WIN-EKBO0EQ7TS7.example.org/
+        service-principal: HTTP/neo.example.org@EXAMPLE.ORG
+        keytab-location: /tmp/tomcat.keytab
+        ldap-search-base: dc=example,dc=org
+        ldap-search-filter: "(| (userPrincipalName={0}) (sAMAccountName={0}))"</pre>
+<p>In above you can see the default configuration for this sample. You
+can override these settings using a normal Spring Boot tricks like
+using command-line options or custom <code class="literal">application.yml</code> file.</p>
+<p>Run a server.</p>
+<pre class="programlisting">$ java -jar sec-server-win-auth-1.0.1.RELEASE.jar</pre>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="./Spring Security Kerberos - Reference Documentation_files/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top">
+<p>You may need to use custom kerberos config with Linux either by using
+<code class="literal">-Djava.security.krb5.conf=/path/to/krb5.ini</code> or
+<code class="literal">GlobalSunJaasKerberosConfig</code> bean.</p>
+</td></tr></tbody></table></div>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="./Spring Security Kerberos - Reference Documentation_files/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+<p>See <a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupwinkerberos" title="C.2 Setup Windows Domain Controller">Section&nbsp;C.2, “Setup Windows Domain Controller”</a> for more instructions how to work with
+windows kerberos environment.</p>
+</td></tr></tbody></table></div>
+<p>Login to <code class="literal">Windows 8.1</code> using domain credentials and access sample</p>
+<p><span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/ie1.png" alt="ie1"></span>
+<span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/ie2.png" alt="ie2"></span></p>
+<p>Access sample application from a non windows vm and use domain
+credentials manually.</p>
+<p><span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/ff1.png" alt="ff1"></span>
+<span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/ff2.png" alt="ff2"></span>
+<span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/ff3.png" alt="ff3"></span></p>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="samples-sec-server-client-auth" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-client-auth"></a>7.&nbsp;Security Server Side Auth Sample</h2></div></div></div>
+<p>This sample demonstrates how server is able to authenticate user
+against kerberos environment using his credentials passed in via a
+form login.</p>
+<p>Run a server.</p>
+<pre class="programlisting">$ java -jar sec-server-client-auth-1.0.1.RELEASE.jar</pre>
+<pre class="programlisting">server:
+    port: 8080</pre>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="samples-sec-server-spnego-form-auth" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth"></a>8.&nbsp;Security Server Spnego and Form Auth Sample</h2></div></div></div>
+<p>This sample demonstrates how a server can be configured to accept a
+Spnego based negotiation from a browser while still being able to fall
+back to a form based authentication.</p>
+<p>Using a <code class="literal">user1</code> principal <a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupmitkerberos" title="C.1 Setup MIT Kerberos">Section&nbsp;C.1, “Setup MIT Kerberos”</a>, do a kerberos login
+manually using credentials.</p>
+<pre class="programlisting">$ kinit user1
+Password for user1@EXAMPLE.ORG:
+
+$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: user1@EXAMPLE.ORG
+
+Valid starting     Expires            Service principal
+10/03/15 17:18:45  11/03/15 03:18:45  krbtgt/EXAMPLE.ORG@EXAMPLE.ORG
+  renew until 11/03/15 17:18:40</pre>
+<p>or using a keytab file.</p>
+<pre class="programlisting">$ kinit -kt user2.keytab user1
+
+$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: user2@EXAMPLE.ORG
+
+Valid starting     Expires            Service principal
+10/03/15 17:25:03  11/03/15 03:25:03  krbtgt/EXAMPLE.ORG@EXAMPLE.ORG
+  renew until 11/03/15 17:25:03</pre>
+<p>Run a server.</p>
+<pre class="programlisting">$ java -jar sec-server-spnego-form-auth-1.0.1.RELEASE.jar</pre>
+<p>Now you should be able to open your browser and let it do Spnego
+authentication with existing ticket.</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="./Spring Security Kerberos - Reference Documentation_files/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+<p>See <a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#browserspnegoconfig" title="Appendix E. Configure Browsers for Spnego Negotiation">Appendix&nbsp;E, <i>Configure Browsers for Spnego Negotiation</i></a> for more instructions for configuring
+browsers to use Spnego.</p>
+</td></tr></tbody></table></div>
+<pre class="programlisting">server:
+    port: 8080
+app:
+    service-principal: HTTP/neo.example.org@EXAMPLE.ORG
+    keytab-location: /tmp/tomcat.keytab</pre>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="samples-sec-server-spnego-form-auth-xml" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth-xml"></a>9.&nbsp;Security Server Spnego and Form Auth Xml Sample</h2></div></div></div>
+<p>This is a same sample than <a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth" title="8. Security Server Spnego and Form Auth Sample">Chapter&nbsp;8, <i>Security Server Spnego and Form Auth Sample</i></a> but
+using xml based configuration instead of JavaConfig.</p>
+<p>Run a server.</p>
+<pre class="programlisting">$ java -jar sec-server-spnego-form-auth-xml-1.0.1.RELEASE.jar</pre>
+</div>
+<div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="samples-sec-client-rest-template" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-client-rest-template"></a>10.&nbsp;Security Client KerberosRestTemplate Sample</h2></div></div></div>
+<p>This is a sample using a Spring RestTemplate to access Kerberos
+protected resource. You can use this together with
+<a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#samples-sec-server-spnego-form-auth" title="8. Security Server Spnego and Form Auth Sample">Chapter&nbsp;8, <i>Security Server Spnego and Form Auth Sample</i></a>.</p>
+<p>Default application is configured as shown below.</p>
+<pre class="programlisting">app:
+    user-principal: user2@EXAMPLE.ORG
+    keytab-location: /tmp/user2.keytab
+    access-url: http://neo.example.org:8080/hello</pre>
+<p>Using a <code class="literal">user1</code> principal <a class="xref" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupmitkerberos" title="C.1 Setup MIT Kerberos">Section&nbsp;C.1, “Setup MIT Kerberos”</a>, do a kerberos login
+manually using credentials.</p>
+<pre class="programlisting">$ java -jar sec-client-rest-template-1.0.1.RELEASE.jar --app.user-principal --app.keytab-location</pre>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="./Spring Security Kerberos - Reference Documentation_files/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+<p>In above we simply set <code class="literal">app.user-principal</code> and <code class="literal">app.keytab-location</code>
+to empty values which disables a use of keytab file.</p>
+</td></tr></tbody></table></div>
+<p>If operation is succesfull you should see below output with <code class="literal">user1@EXAMPLE.ORG</code>.</p>
+<pre class="programlisting">&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Spring Security Kerberos Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello user1@EXAMPLE.ORG!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>Or use a <code class="literal">user2</code> with a keytab file.</p>
+<pre class="programlisting">$ java -jar sec-client-rest-template-1.0.1.RELEASE.jar</pre>
+<p>If operation is succesfull you should see below output with <code class="literal">user2@EXAMPLE.ORG</code>.</p>
+<pre class="programlisting">&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Spring Security Kerberos Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello user2@EXAMPLE.ORG!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+</div>
+<div class="part"><div class="titlepage"><div><div><h1 class="title"><a name="appendices" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#appendices"></a>Part&nbsp;IV.&nbsp;Appendices</h1></div></div></div>
+<div class="appendix"><div class="titlepage"><div><div><h2 class="title"><a name="material-used-in-this-document" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#material-used-in-this-document"></a>Appendix&nbsp;A.&nbsp;Material Used in this Document</h2></div></div></div>
+<p>Dummy UserDetailsService used in samples because we don’t have a real
+user source.</p>
+<pre class="programlisting"><span class="hl-keyword">public</span> <span class="hl-keyword">class</span> DummyUserDetailsService <span class="hl-keyword">implements</span> UserDetailsService {
+
+    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
+    <span class="hl-keyword">public</span> UserDetails loadUserByUsername(String username)
+            <span class="hl-keyword">throws</span> UsernameNotFoundException {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> User(username, <span class="hl-string">"notUsed"</span>, true, true, true, true,
+                AuthorityUtils.createAuthorityList(<span class="hl-string">"ROLE_USER"</span>));
+    }
+
+}</pre>
+</div>
+<div class="appendix"><div class="titlepage"><div><div><h2 class="title"><a name="crash-course-to-kerberos" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#crash-course-to-kerberos"></a>Appendix&nbsp;B.&nbsp;Crash Course to Kerberos</h2></div></div></div>
+<p>In any authentication process there are usually a three parties
+involved.</p>
+<p><span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/drawio-kerb-cc1.png" alt="drawio-kerb-cc1"></span></p>
+<p>First is a <code class="literal">client</code> which sometimes is a client computer but in most
+of the scenarios it is the actual user sitting on a computer and
+trying to access resources. Then there is the <code class="literal">resource</code> user is trying
+to access. In this example it is a web server.</p>
+<p>Then there is a <code class="literal">Key Distribution Center</code> or <code class="literal">KDC</code>. In a case of
+Windows environment this would be a <code class="literal">Domain Controller</code>. <code class="literal">KDC</code> is the
+one which really brings everything together and thus is the most
+critical component in your environment. Because of this it is also
+considered as a single point of failure.</p>
+<p>Initially when <code class="literal">Kerberos</code> environment is setup and domain user
+principals created into a database, encryption keys are also
+created. These encryption keys are based on shared secrets(i.e. user
+password) and actual passwords are never kept in a clear text.
+Effectively <code class="literal">KDC</code> has its own key and other keys for domain users.</p>
+<p>Interestingly there is no communication between a <code class="literal">resource</code> and a
+<code class="literal">KDC</code> during the authentication process.</p>
+<p><span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/drawio-kerb-cc2.png" alt="drawio-kerb-cc2"></span></p>
+<p>When client wants to authenticate itself with a <code class="literal">resource</code> it first
+needs to communicate with a <code class="literal">KDC</code>. <code class="literal">Client</code> will craft a special package
+which contains encrypted and unencrypted parts. Unencrypted part
+contains i.e. information about a user and encrypted part other
+information which is part of a protocol. <code class="literal">Client</code> will encrypt package
+data with its own key.</p>
+<p>When <code class="literal">KDC</code> receives this authentication package from a client it
+checks who this <code class="literal">client</code> claims to be from an unencrypted part and based
+on that information it uses <code class="literal">client</code> decryption key it already have in
+its database. If this decryption is succesfull <code class="literal">KDC</code> knows that this
+<code class="literal">client</code> is the one it claims to be.</p>
+<p>What KDC returns to a client is a ticket called <code class="literal">Ticket Granting
+Ticket</code> which is signed by a KDC’s own private key. Later when
+<code class="literal">client</code> sends back this ticket it can try to decrypt it and if that
+operation is succesfull it knows that it was a ticket it itself
+originally signed and gave to a <code class="literal">client</code>.</p>
+<p><span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/drawio-kerb-cc3.png" alt="drawio-kerb-cc3"></span></p>
+<p>When client wants to get a ticket which it can use to authenticate
+with a service, <code class="literal">TGT</code> is send to <code class="literal">KDC</code> which then signs a service ticket
+with service’s own key. This a moment when a trust between
+<code class="literal">client</code> and <code class="literal">service</code> is created. This service ticket contains data
+which only <code class="literal">service</code> itself is able to decrypt.</p>
+<p><span class="inlinemediaobject"><img src="./Spring Security Kerberos - Reference Documentation_files/drawio-kerb-cc4.png" alt="drawio-kerb-cc4"></span></p>
+<p>When <code class="literal">client</code> is authenticating with a service it sends previously
+received service ticket to a service which then thinks that I don’t
+know anything about this guy but he have me an authentication ticket.
+What <code class="literal">service</code> can do next is try to decrypt that ticket and if that
+operation is succesfull it knows that only other party who knows my
+credentials is the <code class="literal">KDC</code> and because I trust him I can also trust that
+this client is a one he claims to be.</p>
+</div>
+<div class="appendix"><div class="titlepage"><div><div><h2 class="title"><a name="setup-kerberos-environments" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setup-kerberos-environments"></a>Appendix&nbsp;C.&nbsp;Setup Kerberos Environments</h2></div></div></div>
+<p>Doing a production setup of Kerberos environment is out of scope of
+this document but this appendix provides some help to get you
+started for setting up needed components for development.</p>
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="setupmitkerberos" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupmitkerberos"></a>C.1&nbsp;Setup MIT Kerberos</h2></div></div></div>
+<p>First action is to setup a new realm and a database.</p>
+<pre class="programlisting"># kdb5_util create -s -r EXAMPLE.ORG
+Loading random data
+Initializing database '/var/lib/krb5kdc/principal' for realm 'EXAMPLE.ORG',
+master key name 'K/M@EXAMPLE.ORG'
+You will be prompted for the database Master Password.
+It is important that you NOT FORGET this password.
+Enter KDC database master key:
+Re-enter KDC database master key to verify:</pre>
+<p><code class="literal">kadmin</code> command can be used to administer Kerberos environment but
+you can’t yet use it because there are no admin users in a database.</p>
+<pre class="programlisting">root@neo:/etc/krb5kdc# kadmin
+Authenticating as principal root/admin@EXAMPLE.ORG with password.
+kadmin: Client not found in Kerberos database while initializing
+kadmin interface</pre>
+<p>Lets use <code class="literal">kadmin.local</code> command to create one.</p>
+<pre class="programlisting">root@neo:/etc/krb5kdc# kadmin.local
+Authenticating as principal root/admin@EXAMPLE.ORG with password.
+
+kadmin.local:  listprincs
+K/M@EXAMPLE.ORG
+kadmin/admin@EXAMPLE.ORG
+kadmin/changepw@EXAMPLE.ORG
+kadmin/cypher@EXAMPLE.ORG
+krbtgt/EXAMPLE.ORG@EXAMPLE.ORG
+
+kadmin.local:  addprinc root/admin@EXAMPLE.ORG
+WARNING: no policy specified for root/admin@EXAMPLE.ORG; defaulting to
+no policy
+Enter password for principal "root/admin@EXAMPLE.ORG":
+Re-enter password for principal "root/admin@EXAMPLE.ORG":
+Principal "root/admin@EXAMPLE.ORG" created.</pre>
+<p>Then enable admins by modifying <code class="literal">kadm5.acl</code> file and restart Kerberos
+services.</p>
+<pre class="programlisting"># cat /etc/krb5kdc/kadm5.acl
+# This file Is the access control list for krb5 administration.
+*/admin *</pre>
+<p>Now you can use <code class="literal">kadmin</code> with previously created <code class="literal">root/admin</code>
+principal. Lets create our first user <code class="literal">user1</code>.</p>
+<pre class="programlisting">kadmin:  addprinc user1
+WARNING: no policy specified for user1@EXAMPLE.ORG; defaulting to no
+policy
+Enter password for principal "user1@EXAMPLE.ORG":
+Re-enter password for principal "user1@EXAMPLE.ORG":
+Principal "user1@EXAMPLE.ORG" created.</pre>
+<p>Lets create our second user <code class="literal">user2</code> and export a keytab file.</p>
+<pre class="programlisting">kadmin:  addprinc user2
+WARNING: no policy specified for user2@EXAMPLE.ORG; defaulting to no
+policy
+Enter password for principal "user2@EXAMPLE.ORG":
+Re-enter password for principal "user2@EXAMPLE.ORG":
+Principal "user2@EXAMPLE.ORG" created.
+
+kadmin:  ktadd -k /tmp/user2.keytab user2@EXAMPLE.ORG
+Entry for principal user2@EXAMPLE.ORG with kvno 2, encryption type aes256-cts-hmac-sha1-96 added to keytab WRFILE:/tmp/user2.keytab.
+Entry for principal user2@EXAMPLE.ORG with kvno 2, encryption type arcfour-hmac added to keytab WRFILE:/tmp/user2.keytab.
+Entry for principal user2@EXAMPLE.ORG with kvno 2, encryption type des3-cbc-sha1 added to keytab WRFILE:/tmp/user2.keytab.
+Entry for principal user2@EXAMPLE.ORG with kvno 2, encryption type des-cbc-crc added to keytab WRFILE:/tmp/user2.keytab.</pre>
+<p>Lets create a service ticket for tomcat and export credentials to a
+keytab file named <code class="literal">tomcat.keytab</code>.</p>
+<pre class="programlisting">kadmin:  addprinc -randkey HTTP/neo.example.org@EXAMPLE.ORG
+WARNING: no policy specified for HTTP/neo.example.org@EXAMPLE.ORG;
+defaulting to no policy
+Principal "HTTP/neo.example.org@EXAMPLE.ORG" created.
+
+kadmin:  ktadd -k /tmp/tomcat.keytab HTTP/neo.example.org@EXAMPLE.ORG
+Entry for principal HTTP/neo.example.org@EXAMPLE.ORG with kvno 2, encryption type aes256-cts-hmac-sha1-96 added to keytab WRFILE:/tmp/tomcat2.keytab.
+Entry for principal HTTP/neo.example.org@EXAMPLE.ORG with kvno 2, encryption type arcfour-hmac added to keytab WRFILE:/tmp/tomcat2.keytab.
+Entry for principal HTTP/neo.example.org@EXAMPLE.ORG with kvno 2, encryption type des3-cbc-sha1 added to keytab WRFILE:/tmp/tomcat2.keytab.
+Entry for principal HTTP/neo.example.org@EXAMPLE.ORG with kvno 2, encryption type des-cbc-crc added to keytab WRFILE:/tmp/tomcat2.keytab.</pre>
+</div>
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="setupwinkerberos" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#setupwinkerberos"></a>C.2&nbsp;Setup Windows Domain Controller</h2></div></div></div>
+<p>This was tested using <code class="literal">Windows Server 2012 R2</code></p>
+<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="./Spring Security Kerberos - Reference Documentation_files/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top">
+<p>Internet is full of good articles and videos how to setup Windows AD
+but these two are quite usefull
+<a class="ulink" href="http://www.rackspace.com/knowledge_center/article/installing-active-directory-on-windows-server-2012" target="_top">Rackspace</a> and
+<a class="ulink" href="http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx" target="_top">Microsoft
+Technet</a>.</p>
+</td></tr></tbody></table></div>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Normal domain controller and active directory setup was done.
+</li><li class="listitem">
+Used dns domain <code class="literal">example.org</code> and windows domain <code class="literal">EXAMPLE</code>.
+</li><li class="listitem">
+I created various domain users like <code class="literal">user1</code>, <code class="literal">user2</code>, <code class="literal">user3</code>,
+<code class="literal">tomcat</code> and set passwords to <code class="literal">Password#</code>.
+</li></ul></div>
+<p>I eventually also added all ip’s of my vm’s to AD’s dns server for
+that not to cause any trouble.</p>
+<pre class="programlisting">Name: WIN-EKBO0EQ7TS7.example.org
+Address: 172.16.101.135
+
+Name: win8vm.example.org
+Address: 172.16.101.136
+
+Name: neo.example.org
+Address: 172.16.101.1</pre>
+<p>Service Principal Name(SPN) needs to be setup with <code class="literal">HTTP</code> and a
+server name <code class="literal">neo.example.org</code> where tomcat servlet container is run. This
+is used with <code class="literal">tomcat</code> domain user and its <code class="literal">keytab</code> is then used as a
+service credential.</p>
+<pre class="programlisting">PS C:\&gt; setspn -A HTTP/neo.example.org tomcat</pre>
+<p>I exported keytab file which is copied to linux server running tomcat.</p>
+<pre class="programlisting">PS C:\&gt; ktpass /out c:\tomcat.keytab /mapuser tomcat@EXAMPLE.ORG /princ HTTP/neo.example.org@EXAMPLE.ORG /pass Password# /ptype KRB5_NT_PRINCIPAL /crypto All
+ Targeting domain controller: WIN-EKBO0EQ7TS7.example.org
+ Using legacy password setting method
+ Successfully mapped HTTP/neo.example.org to tomcat.</pre>
+</div>
+</div>
+<div class="appendix"><div class="titlepage"><div><div><h2 class="title"><a name="troubleshooting" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#troubleshooting"></a>Appendix&nbsp;D.&nbsp;Troubleshooting</h2></div></div></div>
+<p>This appendix provides generic information about troubleshooting
+errors and problems.</p>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="./Spring Security Kerberos - Reference Documentation_files/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top">
+<p>If you think environment and configuration is correctly setup, do
+double check and ask other person to check possible obvious mistakes
+or typos. Kerberos setup is generally very brittle and it is not
+always very easy to debug where the problem lies.</p>
+</td></tr></tbody></table></div>
+<p>
+<b>Cannot find key of appropriate type to decrypt.&nbsp;</b>
+</p><pre class="programlisting">GSSException: Failure unspecified at GSS-API level (Mechanism level:
+Invalid argument (400) - Cannot find key of appropriate type to
+decrypt AP REP - RC4 with HMAC)</pre><p>
+</p>
+<p>If you see abore error indicating missing key type, this will happen
+with two different use cases. Firstly your JVM may not support
+appropriate encryption type or it is disabled in your <code class="literal">krb5.conf</code>
+file.</p>
+<pre class="programlisting">default_tkt_enctypes = rc4-hmac
+default_tgs_enctypes = rc4-hmac</pre>
+<p>Second case is less obvious and hard to track because it will lead
+into same error. This specific <code class="literal">GSSException</code> is throws also if you
+simply don’t have a required encryption key which then may be caused
+by a misconfiguration in your kerberos server or a simply typo in your
+principal.</p>
+<p>
+<b>Using wrong kerberos configuration.&nbsp;</b>
+&#8203;
+</p>
+<p>In most system all commands and libraries will search kerberos
+configuration either from a default locations or special locations
+like JDKs. It’s easy to get mixed up especially if working from unix
+systems, which already may have default settings to work with MIT
+kerberos, towards Windows domains.</p>
+<p>This is a specific example what happens with <code class="literal">ldapsearch</code> trying to
+query Windows AD using kerberos authentication.</p>
+<pre class="programlisting">$ ldapsearch -H ldap://WIN-EKBO0EQ7TS7.example.org -b "dc=example,dc=org"
+SASL/GSSAPI authentication started
+ldap_sasl_interactive_bind_s: Local error (-2)
+  additional info: SASL(-1): generic failure: GSSAPI Error:
+  Unspecified GSS failure.  Minor code may provide more information
+  (No Kerberos credentials available)</pre>
+<p>Well that doesn’t look good and is a simple indication that I don’t
+have a valid kerberos tickets as shown below.</p>
+<pre class="programlisting">$ klist
+klist: Credentials cache file '/tmp/krb5cc_1000' not found</pre>
+<p>We already have a keytab file we exported from Windows AD to be used
+with tomcat running on Linux. Lets try to use that to authenticate
+with Windows AD.</p>
+<p>You can have a dedicated config file which usually can be used with
+native Linux commands and JVMs via system propertys.</p>
+<pre class="programlisting">$ cat krb5.ini
+[libdefaults]
+default_realm = EXAMPLE.ORG
+default_keytab_name = /tmp/tomcat.keytab
+forwardable=true
+
+[realms]
+EXAMPLE.ORG = {
+  kdc = WIN-EKBO0EQ7TS7.example.org:88
+}
+
+[domain_realm]
+example.org=EXAMPLE.ORG
+.example.org=EXAMPLE.ORG</pre>
+<p>Lets use that config and a keytab to get initial credentials.</p>
+<pre class="programlisting">$ env KRB5_CONFIG=/path/to/krb5.ini kinit -kt tomcat.keytab HTTP/neo.example.org@EXAMPLE.ORG
+
+$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: HTTP/neo.example.org@EXAMPLE.ORG
+
+Valid starting     Expires            Service principal
+26/03/15 09:04:37  26/03/15 19:04:37  krbtgt/EXAMPLE.ORG@EXAMPLE.ORG
+  renew until 27/03/15 09:04:37</pre>
+<p>Lets see what happens if we now try to do a simple query against
+Windows AD.</p>
+<pre class="programlisting">$ ldapsearch -H ldap://WIN-EKBO0EQ7TS7.example.org -b "dc=example,dc=org"
+SASL/GSSAPI authentication started
+ldap_sasl_interactive_bind_s: Local error (-2)
+  additional info: SASL(-1): generic failure: GSSAPI Error:
+  Unspecified GSS failure.  Minor code may provide more information
+  (KDC returned error string: PROCESS_TGS)</pre>
+<p>This may be simply because <code class="literal">ldapsearch</code> is getting confused and simply
+using wrong configuration. You can tell <code class="literal">ldapsearch</code> to use a
+different configuration via <code class="literal">KRB5_CONFIG</code> env variable just like we
+did with <code class="literal">kinit</code>. You can also use <code class="literal">KRB5_TRACE=/dev/stderr</code> to get
+more verbose output of what native libraries are doing.</p>
+<pre class="programlisting">$ env KRB5_CONFIG=/path/to/krb5.ini ldapsearch -H ldap://WIN-EKBO0EQ7TS7.example.org -b "dc=example,dc=org"
+
+$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: HTTP/neo.example.org@EXAMPLE.ORG
+
+Valid starting     Expires            Service principal
+26/03/15 09:11:03  26/03/15 19:11:03  krbtgt/EXAMPLE.ORG@EXAMPLE.ORG
+  renew until 27/03/15 09:11:03
+  26/03/15 09:11:44  26/03/15 19:11:03
+  ldap/win-ekbo0eq7ts7.example.org@EXAMPLE.ORG
+    renew until 27/03/15 09:11:03</pre>
+<p>Above you can see what happened if query was successful by looking
+kerberos tickets. Now you can experiment with further query commands
+i.e. if you working with <code class="literal">KerberosLdapContextSource</code>.</p>
+<pre class="programlisting">$ ldapsearch -H ldap://WIN-EKBO0EQ7TS7.example.org \
+-b "dc=example,dc=org" \
+"(| (userPrincipalName=user2@EXAMPLE.ORG)
+(sAMAccountName=user2@EXAMPLE.ORG))" \
+dn
+
+...
+# test user, example.org
+dn: CN=test user,DC=example,DC=org</pre>
+</div>
+<div class="appendix"><div class="titlepage"><div><div><h2 class="title"><a name="browserspnegoconfig" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#browserspnegoconfig"></a>Appendix&nbsp;E.&nbsp;Configure Browsers for Spnego Negotiation</h2></div></div></div>
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="firefox" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#firefox"></a>E.1&nbsp;Firefox</h2></div></div></div>
+<p>Complete following steps to ensure that your Firefox browser is
+enabled to perform Spnego authentication.</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Open Firefox.
+</li><li class="listitem">
+At address field, type <span class="strong"><strong>about:config</strong></span>.
+</li><li class="listitem">
+In filter/search, type <span class="strong"><strong>negotiate</strong></span>.
+</li><li class="listitem">
+Parameter <span class="strong"><strong>network.negotiate-auth.trusted-uris</strong></span> may be set to
+default <span class="strong"><strong>https://</strong></span> which doesn’t work for you. Generally speaking
+this parameter has to replaced with the server address if Kerberos
+delegation is required.
+</li><li class="listitem">
+It is recommended to use <code class="literal">https</code> for all communication.
+</li></ul></div>
+</div>
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="chrome" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#chrome"></a>E.2&nbsp;Chrome</h2></div></div></div>
+<p>With Google Chrome you generally need to set command-line parameters
+order to white list servers with Chrome will negotiate.</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+on Windows machines (clients): Chrome shares the configuration with
+Internet Explorer so if all changes were applied to IE (as described
+in E.3), nothing has to be passed via command-line parameters.
+</li><li class="listitem">
+on Linux/Mac OS machines (clients): the command-line parameter
+<code class="literal">--auth-negotiate-delegate-whitelist</code> should only used if Kerberos
+delegation is required (otherwise do not set this parameter).
+</li><li class="listitem">
+It is recommended to use <code class="literal">https</code> for all communication.
+</li></ul></div>
+<pre class="programlisting">--auth-server-whitelist="*.example.com"
+--auth-negotiate-delegate-whitelist="*.example.com"</pre>
+<p>You can see which policies are enable by typing <span class="strong"><strong>chrome://policy/</strong></span>
+into Chrome’s address bar.</p>
+<p>With Linux Chrome will also read policy files from
+<code class="literal">/etc/opt/chrome/policies/managed</code> directory.</p>
+<p>
+<b>mypolicy.json.&nbsp;</b>
+</p><pre class="programlisting">{
+  "AuthServerWhitelist" : "*.example.org",
+  "AuthNegotiateDelegateWhitelist" : "*.example.org",
+  "DisableAuthNegotiateCnameLookup" : true,
+  "EnableAuthNegotiatePort" : true
+}</pre><p>
+</p>
+</div>
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="internet-explorer" href="https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/#internet-explorer"></a>E.3&nbsp;Internet Explorer</h2></div></div></div>
+<p>Complete following steps to ensure that your Internet Explorer browser
+is enabled to perform Spnego authentication.</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Open Internet Explorer.
+</li><li class="listitem">
+Click <span class="strong"><strong>Tools &gt; Intenet Options &gt; Security</strong></span> tab.
+</li><li class="listitem">
+In <span class="strong"><strong>Local intranet</strong></span> section make sure your server is trusted by i.e.
+adding it into a list.
+</li></ul></div>
+</div>
+</div>
+</div>
+</div><script async="" src="./Spring Security Kerberos - Reference Documentation_files/analytics.js.download"></script><script>if(window.parent==window){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-2728886-23','auto',{'siteSpeedSampleRate':100});ga('send','pageview');}</script></body></html>

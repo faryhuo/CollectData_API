@@ -3,8 +3,8 @@ package com.axisoft.collect.controller;
 import com.axisoft.collect.entites.ComputerInfo;
 import com.axisoft.collect.entites.ResponseEntity;
 import com.axisoft.collect.service.ExcelGeneratorService;
+import com.axisoft.collect.service.ExcelUtilsService;
 import com.axisoft.collect.service.impl.ComputerCollectServiceImpl;
-import com.axisoft.collect.service.impl.ExcelCheckServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +18,10 @@ import java.util.*;
 @Controller
 public class CollectController {
 
+
     @Autowired
-    ExcelCheckServiceImpl excelCheckServiceImpl;
+    ExcelUtilsService excelUtilsService;
+
 
     @Autowired
     ExcelGeneratorService excelGeneratorService;
@@ -62,7 +64,7 @@ public class CollectController {
     @PostMapping("/checkExcelFile")
     @ResponseBody
     public ResponseEntity checkExcelFile(@RequestParam(name="excelFile") MultipartFile excelFile, HttpServletResponse response) throws IOException {
-        List<String> messageList= excelCheckServiceImpl.validateFile(excelFile.getInputStream());
+        List<String> messageList= excelUtilsService.validateFile(excelFile.getInputStream());
         if(messageList.size()>0){
             return ResponseEntity.createErrorByErrorMessage(messageList);
         }

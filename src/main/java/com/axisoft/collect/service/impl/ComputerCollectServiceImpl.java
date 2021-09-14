@@ -11,6 +11,7 @@ import org.htmlparser.Node;
 import org.htmlparser.Parser;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.ParserException;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Service
 public class ComputerCollectServiceImpl implements ComputerCollectService {
 
     private  String getElementData(String textName,String content) throws ParserException {
