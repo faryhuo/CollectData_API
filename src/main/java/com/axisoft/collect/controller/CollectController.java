@@ -1,15 +1,14 @@
 package com.axisoft.collect.controller;
 
 import com.axisoft.collect.entites.ComputerInfo;
-import com.axisoft.collect.entites.LicenseInfo;
 import com.axisoft.collect.entites.ResponseEntity;
-import com.axisoft.collect.service.CollectService;
-import com.axisoft.collect.service.ExcelCheck;
+import com.axisoft.collect.service.ExcelGeneratorService;
+import com.axisoft.collect.service.impl.ComputerCollectServiceImpl;
+import com.axisoft.collect.service.impl.ExcelCheckServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,13 +19,17 @@ import java.util.*;
 public class CollectController {
 
     @Autowired
-    ExcelCheck excelCheck;
+    ExcelCheckServiceImpl excelCheckServiceImpl;
+
+    @Autowired
+    ExcelGeneratorService excelGeneratorService;
 
     @PostMapping("/downloadFile")
     public void downloadFile(HttpServletResponse response, HttpSession session) throws IOException {
 
         response.setContentType("application/x-xls;charset = UTF-8");
-        response.setHeader("Content-Disposition","attachment;filename=computerInfo.xls;");
+        String tempTileName=(String)session.getAttribute("tempTileName");
+        response.setHeader("Content-Disposition",String.format("attachment;filename=%s;",tempTileName));
         File excelFile=(File)session.getAttribute("tempTile");
         FileInputStream fileInputStream=new FileInputStream(excelFile);
         int len=0;
@@ -38,30 +41,28 @@ public class CollectController {
 
     @PostMapping("/download")
     @ResponseBody
-    public ResponseEntity download(@RequestParam(name="files") MultipartFile[] files,@RequestParam(name="excelFile") MultipartFile[] excelFile, HttpSession session) throws IOException {
-        CollectService collectService= new CollectService();
+    public ResponseEntity download(@RequestParam(name="files") MultipartFile[] files,@RequestParam(name="excelFile") MultipartFile excelFile, HttpSession session) throws IOException {
+        ComputerCollectServiceImpl computerCollectServiceImpl = new ComputerCollectServiceImpl();
         Map<String,InputStream> inputStreams=new HashMap<>();
-        Map<String,InputStream> excelInputStreams=new HashMap<>();
+        InputStream excelInputStreams=excelFile.getInputStream();
 
         for(int i=0;i<files.length;i++){
             inputStreams.put(files[i].getOriginalFilename(),files[i].getInputStream());
         }
-        for(int i=0;i<excelFile.length;i++){
-            excelInputStreams.put(excelFile[i].getOriginalFilename(),excelFile[i].getInputStream());
-        }
+
         File tempTile=File.createTempFile("computerInfo",".xls");
         session.setAttribute("tempTile",tempTile);
+        session.setAttribute("tempTileName",excelFile.getOriginalFilename());
         OutputStream outputStream=new FileOutputStream(tempTile);
-        List<LicenseInfo> licenseInfo=collectService.getLicenseKeyInfo(excelInputStreams);
-        List<ComputerInfo> computerInfoList=collectService.getComputerInfoList(inputStreams);
-        collectService.writerComputerInfoToExcel(computerInfoList,licenseInfo,outputStream);
+        List<ComputerInfo> computerInfoList= computerCollectServiceImpl.getComputerInfoList(inputStreams);
+        excelGeneratorService.generateExcel(computerInfoList,excelInputStreams,outputStream);
         return ResponseEntity.createSuccess();
     }
 
     @PostMapping("/checkExcelFile")
     @ResponseBody
     public ResponseEntity checkExcelFile(@RequestParam(name="excelFile") MultipartFile excelFile, HttpServletResponse response) throws IOException {
-        List<String> messageList=excelCheck.validateFile(excelFile.getInputStream());
+        List<String> messageList= excelCheckServiceImpl.validateFile(excelFile.getInputStream());
         if(messageList.size()>0){
             return ResponseEntity.createErrorByErrorMessage(messageList);
         }

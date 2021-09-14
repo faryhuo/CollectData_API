@@ -1,7 +1,8 @@
-package com.axisoft.collect.service;
+package com.axisoft.collect.service.impl;
 
 import com.axisoft.collect.entites.ComputerInfo;
 import com.axisoft.collect.entites.LicenseInfo;
+import com.axisoft.collect.service.ComputerCollectService;
 import com.axisoft.collect.utils.HTMLUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -19,9 +20,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CollectService {
+public class ComputerCollectServiceImpl implements ComputerCollectService {
 
-    public  String getElementData(String textName,String content) throws ParserException {
+    private  String getElementData(String textName,String content) throws ParserException {
         Parser parser = Parser.createParser(content, HTMLUtils.ENCODE);
         for (NodeIterator i = parser.elements (); i.hasMoreNodes(); ) {
             Node node = i.nextNode();
@@ -71,13 +72,6 @@ public class CollectService {
         return computerInfoList;
     }
 
-    public List<ComputerInfo> getComputerInfoList(File[] files){
-        List<ComputerInfo> computerInfoList=new ArrayList<ComputerInfo>();
-        for(int i=0;i<files.length;i++){
-            computerInfoList.add(getComputerInfo(files[i]));
-        }
-        return computerInfoList;
-    }
 
     public List<ComputerInfo> getComputerInfoList(Map<String,InputStream> inputStreams){
         List<ComputerInfo> computerInfoList=new ArrayList<ComputerInfo>();
@@ -210,7 +204,7 @@ public class CollectService {
     }
 
 
-    public Map<String,String> getSoftwareLicenses(String content) throws ParserException {
+    private Map<String,String> getSoftwareLicenses(String content) throws ParserException {
         Parser parser = Parser.createParser(content, HTMLUtils.ENCODE);
         Node tableNode=null;
         for (NodeIterator i = parser.elements (); i.hasMoreNodes(); ) {
@@ -284,7 +278,7 @@ public class CollectService {
     }
 
 
-    public String encodeKey(String key,String productName,List<LicenseInfo> licenseInfoList){
+    private String encodeKey(String key,String productName,List<LicenseInfo> licenseInfoList){
         Pattern pattern = Pattern.compile("[(]Key:([ 0-9a-zA-Z\\-,\\\\/']+)[)]");
         Matcher matcher =pattern.matcher(key);
         String encodeKey=key;

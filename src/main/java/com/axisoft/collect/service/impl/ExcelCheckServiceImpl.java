@@ -1,8 +1,6 @@
-package com.axisoft.collect.service;
+package com.axisoft.collect.service.impl;
 
-import com.axisoft.collect.entites.LicenseInfo;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.usermodel.Row;
+import com.axisoft.collect.service.ExcelCheckService;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -15,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ExcelCheck {
-    org.slf4j.Logger logger= LoggerFactory.getLogger(ExcelCheck.class);
+public class ExcelCheckServiceImpl implements ExcelCheckService {
+    org.slf4j.Logger logger= LoggerFactory.getLogger(ExcelCheckServiceImpl.class);
 
     public List<String> validateFile(InputStream inputStream) throws IOException {
         Workbook workbook = null;
