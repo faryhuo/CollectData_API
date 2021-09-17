@@ -2,9 +2,12 @@ package com.axisoft.collect.controller;
 
 import com.axisoft.collect.entites.ComputerInfo;
 import com.axisoft.collect.entites.ResponseEntity;
+import com.axisoft.collect.service.ComputerCollectService;
 import com.axisoft.collect.service.ExcelGeneratorService;
 import com.axisoft.collect.service.ExcelUtilsService;
 import com.axisoft.collect.service.impl.ComputerCollectServiceImpl;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,7 @@ import java.io.*;
 import java.util.*;
 
 @Controller
+@RequestMapping("/api")
 public class CollectController {
 
 
@@ -25,6 +29,9 @@ public class CollectController {
 
     @Autowired
     ExcelGeneratorService excelGeneratorService;
+
+    @Autowired
+    ComputerCollectService computerCollectService;
 
     @PostMapping("/downloadFile")
     public void downloadFile(HttpServletResponse response, HttpSession session) throws IOException {
@@ -40,26 +47,37 @@ public class CollectController {
             response.getOutputStream().write(buffer,0,len);
         }
     }
-
     @PostMapping("/download")
     @ResponseBody
-    public ResponseEntity download(@RequestParam(name="files") MultipartFile[] files,@RequestParam(name="excelFile") MultipartFile excelFile, HttpSession session) throws IOException {
-        ComputerCollectServiceImpl computerCollectServiceImpl = new ComputerCollectServiceImpl();
-        Map<String,InputStream> inputStreams=new HashMap<>();
+    public ResponseEntity download(String computerInfoListStr,@RequestParam(name="excelFile") MultipartFile excelFile, HttpSession session) throws IOException {
         InputStream excelInputStreams=excelFile.getInputStream();
-
-        for(int i=0;i<files.length;i++){
-            inputStreams.put(files[i].getOriginalFilename(),files[i].getInputStream());
-        }
-
         File tempTile=File.createTempFile("computerInfo",".xls");
         session.setAttribute("tempTile",tempTile);
         session.setAttribute("tempTileName",excelFile.getOriginalFilename());
         OutputStream outputStream=new FileOutputStream(tempTile);
-        List<ComputerInfo> computerInfoList= computerCollectServiceImpl.getComputerInfoList(inputStreams);
+        ObjectMapper objectMapper =new ObjectMapper();
+        List<ComputerInfo> computerInfoList=objectMapper.readValue(computerInfoListStr,new TypeReference<List<ComputerInfo>>() {});
         excelGeneratorService.generateExcel(computerInfoList,excelInputStreams,outputStream);
         return ResponseEntity.createSuccess();
     }
+//    @PostMapping("/download")
+//    @ResponseBody
+//    public ResponseEntity download(@RequestParam(name="files") MultipartFile[] files,@RequestParam(name="excelFile") MultipartFile excelFile, HttpSession session) throws IOException {
+//        Map<String,InputStream> inputStreams=new HashMap<>();
+//        InputStream excelInputStreams=excelFile.getInputStream();
+//
+//        for(int i=0;i<files.length;i++){
+//            inputStreams.put(files[i].getOriginalFilename(),files[i].getInputStream());
+//        }
+//
+//        File tempTile=File.createTempFile("computerInfo",".xls");
+//        session.setAttribute("tempTile",tempTile);
+//        session.setAttribute("tempTileName",excelFile.getOriginalFilename());
+//        OutputStream outputStream=new FileOutputStream(tempTile);
+//        List<ComputerInfo> computerInfoList= computerCollectService.getComputerInfoList(inputStreams);
+//        excelGeneratorService.generateExcel(computerInfoList,excelInputStreams,outputStream);
+//        return ResponseEntity.createSuccess();
+//    }
 
     @PostMapping("/checkExcelFile")
     @ResponseBody
@@ -71,5 +89,17 @@ public class CollectController {
         return ResponseEntity.createSuccess();
     }
 
+
+    @PostMapping("/checkLicenseFile")
+    @ResponseBody
+    public ResponseEntity checkLicenseFile(@RequestParam(name="files") MultipartFile[] files, HttpServletResponse response, HttpSession session) throws IOException {
+        Map<String,InputStream> inputStreams=new HashMap<>();
+        for(int i=0;i<files.length;i++){
+            inputStreams.put(files[i].getOriginalFilename(),files[i].getInputStream());
+        }
+        List<ComputerInfo> computerInfoList= computerCollectService.getComputerInfoList(inputStreams);
+        session.setAttribute("computerInfoList",computerInfoList);
+        return ResponseEntity.createSuccess(computerInfoList);
+    }
 
 }

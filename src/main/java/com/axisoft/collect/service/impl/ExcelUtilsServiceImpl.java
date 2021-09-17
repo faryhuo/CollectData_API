@@ -53,16 +53,11 @@ public class ExcelUtilsServiceImpl implements ExcelUtilsService {
 
 
     public void removeRow(Sheet sheet, int rowIndex) {
-        int lastRowNum=sheet.getLastRowNum();
-        if(rowIndex>=0&&rowIndex<lastRowNum){
-            sheet.shiftRows(rowIndex+1,lastRowNum, -1);
-        }
-        if(rowIndex==lastRowNum){
-/*            Row removingRow=sheet.getRow(rowIndex);
-            if(removingRow!=null){
-                sheet.removeRow(removingRow);
-            }*/
-            sheet.shiftRows(lastRowNum+1,lastRowNum+1, -1);
+        if (rowIndex >= 0) {
+            sheet.removeRow(sheet.getRow(rowIndex));
+            if(rowIndex < sheet.getLastRowNum()) {
+                sheet.shiftRows(rowIndex + 1, sheet.getLastRowNum(), -1);
+            }
         }
     }
 }

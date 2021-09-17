@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Map;
 
 public class ComputerInfo {
+    private String key;
     private String fileName;
     private Boolean isConvert;
     private String message;
@@ -67,5 +68,13 @@ public class ComputerInfo {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

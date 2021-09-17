@@ -6,6 +6,7 @@ import com.axisoft.collect.entites.LicenseInfo;
 import com.axisoft.collect.service.AllLicenseService;
 import com.axisoft.collect.service.ExcelGeneratorService;
 import com.axisoft.collect.service.ExistLicenseService;
+import com.axisoft.collect.service.UsedLicenseService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,8 @@ public class ExcelGeneratorServiceImpl implements ExcelGeneratorService {
     @Autowired
     ExistLicenseService existLicenseService;
 
-
+    @Autowired
+    UsedLicenseService usedLicenseService;
 
     @Override
     public void generateExcel(List<ComputerInfo> computerInfos, InputStream inputStream,OutputStream outputStream) throws IOException {
@@ -35,6 +37,7 @@ public class ExcelGeneratorServiceImpl implements ExcelGeneratorService {
         try {
             workbook = WorkbookFactory.create(inputStream);
             List<ExistLicense> existLicenseList=existLicenseService.insertExistData(computerInfos, workbook);
+            usedLicenseService.insertUsedData(existLicenseList,workbook);
             workbook.write(outputStream);
         }finally {
             if(inputStream!=null){

@@ -37,11 +37,11 @@ public class ExcelGeneratorServiceImplTest  {
 
     @Test
     public void testGenerateExcel01() throws IOException {
-        String inputExcelPath="C:\\Users\\faryhuo\\Desktop\\Company Software License (13).xlsx";
+        String inputExcelPath="C:\\Users\\faryhuo\\Desktop\\Company Software License (11).xlsx";
         String outputExcelPath="D:\\temp\\excel.xlsx";
         InputStream excelInputStreams=new FileInputStream(new File(inputExcelPath));
         URL resource = ExcelGeneratorServiceImplTest.class.getClassLoader().getResource("html");
-        String path = resource.getPath();
+        String path = "C:\\Temp\\html\\Software License & Hardware\\ALAB BLAB CLAB DLAB";//resource.getPath();
         File[] files=new File(path).listFiles();
         Map<String,InputStream> inputStreams=new HashMap<>();
         for(int i=0;i<files.length;i++) {

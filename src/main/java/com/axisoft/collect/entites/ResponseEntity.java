@@ -43,7 +43,12 @@ public class ResponseEntity<T> {
         responseEntity.setStatus(0);
         return responseEntity;
     }
-
+    public static ResponseEntity createSuccess(Object data){
+        ResponseEntity responseEntity=new ResponseEntity();
+        responseEntity.setStatus(0);
+        responseEntity.setData(data);
+        return responseEntity;
+    }
     public static ResponseEntity createErrorByErrorMessage(List<String> messageList){
         ResponseEntity responseEntity=new ResponseEntity();
         responseEntity.setStatus(1);

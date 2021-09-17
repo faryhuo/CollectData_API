@@ -38,6 +38,8 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
 
     final String SHEET_NAME="Existing";
 
+    private double maxNumber=0;
+
 //    @Override
 //    public String getMachineName(String machineName) {
 //        return null;
@@ -48,7 +50,6 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
 //        return null;
 //    }
 
-    private Map<String,AssetCode> assetCodeMap=new HashMap<>();
 
     @Override
     public String getProductKey(String key,String productName,List<LicenseInfo> licenseInfoList){
@@ -110,7 +111,7 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
     @Override
     public List<ExistLicense>  insertExistData(List<ComputerInfo> computerInfos, Workbook workbook) throws IOException {
         Sheet existingSheet=workbook.getSheet(SHEET_NAME);
-        deleteSameMachineRecord(computerInfos, existingSheet,workbook);
+        maxNumber=deleteSameMachineRecord(computerInfos, existingSheet,workbook);
         int currentTotalRow = existingSheet.getLastRowNum();
         List<LicenseInfo> licenseInfoList=allLicenseService.getAllLicenseKeyInfo(workbook);
         int index=currentTotalRow+1;
@@ -122,7 +123,8 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             }
             Map<String,Integer> productKeyMap=new HashMap<>();
             for (String key: computerInfo.getSoftwareLicenses().keySet()) {
-                insertRecord(workbook, existingSheet, licenseInfoList, index, computerInfo, productKeyMap, key);
+                ExistLicense existLicense=insertRecord(workbook, existingSheet, licenseInfoList, index, computerInfo, productKeyMap, key);
+                existLicenseList.add(existLicense);
                 index++;
             }
             productKeyMap.clear();
@@ -143,13 +145,21 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
         String productKey=computerInfo.getSoftwareLicenses().get(key);
         String encodeKey=existLicenseService.getProductKey(productKey,key,licenseInfoList);
         AssetCode assetCode=assetCodeService.getAssetCodeByMachineName(computerInfo.getComputerName(),workbook);
+        maxNumber++;
+        row.getCell(0).setCellValue(maxNumber);
         if(assetCode!=null) {
             row.getCell(1).setCellValue(assetCode.getInventoryCode());
             row.getCell(2).setCellValue(assetCode.getUsername());
+            existLicense.setMachineName(assetCode.getInventoryCode());
+            existLicense.setUsername(assetCode.getUsername());
         }else{
             row.getCell(1).setCellValue(computerInfo.getComputerName());
             row.getCell(2).setCellValue(computerInfo.getWindowLogon());
+            existLicense.setMachineName(computerInfo.getComputerName());
+            existLicense.setUsername(computerInfo.getWindowLogon());
         }
+        existLicense.setProduct(key);
+        existLicense.setProductKey(encodeKey);
         row.getCell(3).setCellValue(key);
         row.getCell(4).setCellValue(encodeKey);
         String pk=String.format("%s##%s##%s",computerInfo.getComputerName(),computerInfo.getWindowLogon(),encodeKey);
@@ -158,38 +168,54 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             number++;
             productKeyMap.put(pk, number);
             row.getCell(5).setCellValue(number);
+            existLicense.setNumber(number);
         }else {
             productKeyMap.put(pk, 1);
             row.getCell(5).setCellValue(1);
+            existLicense.setNumber(1);
         }
         int rowIndex=row.getRowNum()+1;
         String foumula=String.format("IF(ISERROR(HYPERLINK(\"#Used!C\"&MATCH((E%d&B%d&F%d),Used!J:J,0),\"Y\")),\"\",HYPERLINK(\"#Used!C\"&MATCH((E%d&B%d&F%d),Used!J:J,0),\"Y\"))"
                 ,rowIndex,rowIndex,rowIndex,rowIndex,rowIndex,rowIndex);
         row.getCell(6).setCellFormula(foumula);
-        row.getCell(7).setCellValue(productKey);
+        //row.getCell(7).setCellValue(productKey);
         return existLicense;
     }
 
-    private void deleteSameMachineRecord(List<ComputerInfo> computerInfos, Sheet existingSheet,Workbook workbook) {
+    private double deleteSameMachineRecord(List<ComputerInfo> computerInfos, Sheet existingSheet,Workbook workbook) {
         int totalRow = existingSheet.getLastRowNum();
         List<Integer> needToDeleteRows=new ArrayList<>();
+        double maxNumber=0;
         for (int i = 2; i <= totalRow; i++) {
             Row row = existingSheet.getRow(i);
             if (row == null) {
+                needToDeleteRows.add(i);
                 continue;
             }
             String machineName=null;
             String user=null;
+            double no=0;
+            if(row.getCell(0)!=null) {
+                no = row.getCell(0).getNumericCellValue();
+            }
             if(row.getCell(1)!=null) {
                 machineName = row.getCell(1).getStringCellValue();
             }
             if(row.getCell(2)!=null) {
                 user = row.getCell(2).getStringCellValue();
             }
+            if(maxNumber<no){
+                maxNumber=no;
+            }
             boolean hasExistRecord=false;
+            if(StringUtils.isBlank(machineName) && StringUtils.isBlank(user)){
+                needToDeleteRows.add(i);
+                row.setZeroHeight(true);
+                continue;
+            }
             for(int j=0;j<computerInfos.size();j++){
                 ComputerInfo computerInfo=computerInfos.get(j);
-                AssetCode assetCode=assetCodeMap.get(computerInfo.getComputerName());
+                AssetCode assetCode=assetCodeService.getAssetCodeByMachineName(computerInfo.getComputerName(),workbook);
                 if(assetCode!=null) {
                     if ((StringUtils.isBlank(machineName) && StringUtils.isBlank(user) ||
                             (StringUtils.equals(assetCode.getInventoryCode(), machineName)
@@ -206,13 +232,18 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
                     }
                 }
             }
+            //row.setZeroHeight(true);
             if(hasExistRecord) {
+                row.setZeroHeight(true);
                 needToDeleteRows.add(i);
             }
         }
         for(int rowIndex=needToDeleteRows.size()-1;rowIndex>=0;rowIndex--){
-            excelUtilsService.removeRow(existingSheet,needToDeleteRows.get(rowIndex));
+            existingSheet.removeRow(existingSheet.getRow(needToDeleteRows.get(rowIndex)));
+            //existingSheet.getRow(needToDeleteRows.get(rowIndex)).setZeroHeight(true);
+            //excelUtilsService.removeRow(existingSheet,needToDeleteRows.get(rowIndex));
         }
+        return maxNumber;
     }
 
 
