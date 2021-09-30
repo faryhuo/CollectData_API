@@ -19,10 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resources;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @SpringBootTest(classes={com.axisoft.collect.Application.class})
 @RunWith(SpringRunner.class)
@@ -38,7 +35,25 @@ public class ExcelGeneratorServiceImplTest  {
     @Test
     public void testGenerateExcel01() throws IOException {
         String inputExcelPath="C:\\Users\\faryhuo\\Desktop\\Company Software License (11).xlsx";
-        String outputExcelPath="D:\\temp\\excel.xlsx";
+        String outputExcelPath="D:\\temp\\excel_"+new Date().getTime()+".xlsx";
+        testGenerateExcel(inputExcelPath,outputExcelPath);
+    }
+
+    @Test
+    public void testGenerateExcel02() throws IOException {
+        String inputExcelPath="C:\\Users\\faryhuo\\Desktop\\Company Software License (11).xlsx";
+        String outputExcelPath="D:\\temp\\excel_"+new Date().getTime()+".xlsx";
+        testGenerateExcel(inputExcelPath,outputExcelPath);
+        for(int i=0;i<10;i++){
+            inputExcelPath=outputExcelPath;
+            outputExcelPath="D:\\temp\\excel_"+new Date().getTime()+".xlsx";
+            testGenerateExcel(inputExcelPath,outputExcelPath);
+
+        }
+
+    }
+
+    private void testGenerateExcel(String inputExcelPath,String outputExcelPath) throws IOException {
         InputStream excelInputStreams=new FileInputStream(new File(inputExcelPath));
         URL resource = ExcelGeneratorServiceImplTest.class.getClassLoader().getResource("html");
         String path = "C:\\Temp\\html\\Software License & Hardware\\ALAB BLAB CLAB DLAB";//resource.getPath();

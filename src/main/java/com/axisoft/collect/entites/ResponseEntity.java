@@ -55,4 +55,11 @@ public class ResponseEntity<T> {
         responseEntity.setMessage(StringUtils.join(messageList.toArray(),"\r\n"));
         return responseEntity;
     }
+
+    public static ResponseEntity createErrorByErrorMessage(String message){
+        ResponseEntity responseEntity=new ResponseEntity();
+        responseEntity.setStatus(1);
+        responseEntity.setMessage(message);
+        return responseEntity;
+    }
 }

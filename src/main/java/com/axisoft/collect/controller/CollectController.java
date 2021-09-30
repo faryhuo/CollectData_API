@@ -57,7 +57,11 @@ public class CollectController {
         OutputStream outputStream=new FileOutputStream(tempTile);
         ObjectMapper objectMapper =new ObjectMapper();
         List<ComputerInfo> computerInfoList=objectMapper.readValue(computerInfoListStr,new TypeReference<List<ComputerInfo>>() {});
-        excelGeneratorService.generateExcel(computerInfoList,excelInputStreams,outputStream);
+        try {
+            excelGeneratorService.generateExcel(computerInfoList,excelInputStreams,outputStream);
+        }catch (Exception e){
+            return ResponseEntity.createErrorByErrorMessage(e.getMessage());
+        }
         return ResponseEntity.createSuccess();
     }
 //    @PostMapping("/download")
@@ -102,4 +106,11 @@ public class CollectController {
         return ResponseEntity.createSuccess(computerInfoList);
     }
 
+    @PostMapping("/exportReport")
+    public void generateComputerInfoExcel(HttpServletResponse response, HttpSession session) throws IOException {
+        List<ComputerInfo> computerInfoList=(List<ComputerInfo>)session.getAttribute("computerInfoList");
+        excelGeneratorService.generateComputerInfoExcel(computerInfoList,response.getOutputStream());
+        response.setContentType("application/x-xls;charset = UTF-8");
+        response.setHeader("Content-Disposition",String.format("attachment;filename=%s;","Upload license Information.xlsx"));
+    }
 }
