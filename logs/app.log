@@ -1,24 +1,344 @@
-2021-09-29 15:02:51,251 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 13328 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 15:02:51,267 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 15:02:56,693 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 15:02:57,041 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 15:02:57,538 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 8.183 seconds (JVM running for 15.073)
-2021-09-29 15:03:35,009 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 15:04:24,073 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 12552 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 15:04:24,078 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 15:04:27,530 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 15:04:27,780 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 15:04:28,277 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.75 seconds (JVM running for 9.927)
-2021-09-29 15:04:58,080 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:16:18,498 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 5908 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:16:18,501 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:16:22,075 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:16:22,339 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:16:23,128 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.897 seconds (JVM running for 9.856)
-2021-09-29 16:16:56,221 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : null
-java.lang.NullPointerException: null
-	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:67)
-	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:40)
+2021-12-16 14:25:50,234 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 8972 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:25:50,272 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:25:54,399 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:25:54,548 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:25:54,935 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.883 seconds (JVM running for 11.229)
+2021-12-16 14:26:16,820 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Parse error near char 86 '[' in specified formula 'IF(ISNA(INDEX(Existing!C:C,MATCH(C772,Existing!E:E,0))), "", INDEX(Existing!C:C,MATCH([C772],Existing!E:E,0)))'. Expected number, string, defined name, or data table
+org.apache.poi.ss.formula.FormulaParseException: Parse error near char 86 '[' in specified formula 'IF(ISNA(INDEX(Existing!C:C,MATCH(C772,Existing!E:E,0))), "", INDEX(Existing!C:C,MATCH([C772],Existing!E:E,0)))'. Expected number, string, defined name, or data table
+	at org.apache.poi.ss.formula.FormulaParser.expected(FormulaParser.java:268)
+	at org.apache.poi.ss.formula.FormulaParser.parseAsName(FormulaParser.java:922)
+	at org.apache.poi.ss.formula.FormulaParser.parseNonRange(FormulaParser.java:889)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeable(FormulaParser.java:497)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeExpression(FormulaParser.java:321)
+	at org.apache.poi.ss.formula.FormulaParser.parseSimpleFactor(FormulaParser.java:1536)
+	at org.apache.poi.ss.formula.FormulaParser.percentFactor(FormulaParser.java:1494)
+	at org.apache.poi.ss.formula.FormulaParser.powerFactor(FormulaParser.java:1481)
+	at org.apache.poi.ss.formula.FormulaParser.Term(FormulaParser.java:1855)
+	at org.apache.poi.ss.formula.FormulaParser.additiveExpression(FormulaParser.java:1983)
+	at org.apache.poi.ss.formula.FormulaParser.concatExpression(FormulaParser.java:1967)
+	at org.apache.poi.ss.formula.FormulaParser.comparisonExpression(FormulaParser.java:1924)
+	at org.apache.poi.ss.formula.FormulaParser.Arguments(FormulaParser.java:1467)
+	at org.apache.poi.ss.formula.FormulaParser.function(FormulaParser.java:1339)
+	at org.apache.poi.ss.formula.FormulaParser.parseNonRange(FormulaParser.java:892)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeable(FormulaParser.java:497)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeExpression(FormulaParser.java:321)
+	at org.apache.poi.ss.formula.FormulaParser.parseSimpleFactor(FormulaParser.java:1536)
+	at org.apache.poi.ss.formula.FormulaParser.percentFactor(FormulaParser.java:1494)
+	at org.apache.poi.ss.formula.FormulaParser.powerFactor(FormulaParser.java:1481)
+	at org.apache.poi.ss.formula.FormulaParser.Term(FormulaParser.java:1855)
+	at org.apache.poi.ss.formula.FormulaParser.additiveExpression(FormulaParser.java:1983)
+	at org.apache.poi.ss.formula.FormulaParser.concatExpression(FormulaParser.java:1967)
+	at org.apache.poi.ss.formula.FormulaParser.comparisonExpression(FormulaParser.java:1924)
+	at org.apache.poi.ss.formula.FormulaParser.Arguments(FormulaParser.java:1467)
+	at org.apache.poi.ss.formula.FormulaParser.function(FormulaParser.java:1339)
+	at org.apache.poi.ss.formula.FormulaParser.parseNonRange(FormulaParser.java:892)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeable(FormulaParser.java:497)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeExpression(FormulaParser.java:321)
+	at org.apache.poi.ss.formula.FormulaParser.parseSimpleFactor(FormulaParser.java:1536)
+	at org.apache.poi.ss.formula.FormulaParser.percentFactor(FormulaParser.java:1494)
+	at org.apache.poi.ss.formula.FormulaParser.powerFactor(FormulaParser.java:1481)
+	at org.apache.poi.ss.formula.FormulaParser.Term(FormulaParser.java:1855)
+	at org.apache.poi.ss.formula.FormulaParser.additiveExpression(FormulaParser.java:1983)
+	at org.apache.poi.ss.formula.FormulaParser.concatExpression(FormulaParser.java:1967)
+	at org.apache.poi.ss.formula.FormulaParser.comparisonExpression(FormulaParser.java:1924)
+	at org.apache.poi.ss.formula.FormulaParser.Arguments(FormulaParser.java:1467)
+	at org.apache.poi.ss.formula.FormulaParser.function(FormulaParser.java:1339)
+	at org.apache.poi.ss.formula.FormulaParser.parseNonRange(FormulaParser.java:892)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeable(FormulaParser.java:582)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeExpression(FormulaParser.java:321)
+	at org.apache.poi.ss.formula.FormulaParser.parseSimpleFactor(FormulaParser.java:1536)
+	at org.apache.poi.ss.formula.FormulaParser.percentFactor(FormulaParser.java:1494)
+	at org.apache.poi.ss.formula.FormulaParser.powerFactor(FormulaParser.java:1481)
+	at org.apache.poi.ss.formula.FormulaParser.Term(FormulaParser.java:1855)
+	at org.apache.poi.ss.formula.FormulaParser.additiveExpression(FormulaParser.java:1983)
+	at org.apache.poi.ss.formula.FormulaParser.concatExpression(FormulaParser.java:1967)
+	at org.apache.poi.ss.formula.FormulaParser.comparisonExpression(FormulaParser.java:1924)
+	at org.apache.poi.ss.formula.FormulaParser.intersectionExpression(FormulaParser.java:1897)
+	at org.apache.poi.ss.formula.FormulaParser.unionExpression(FormulaParser.java:1877)
+	at org.apache.poi.ss.formula.FormulaParser.parse(FormulaParser.java:2025)
+	at org.apache.poi.ss.formula.FormulaParser.parse(FormulaParser.java:170)
+	at org.apache.poi.xssf.usermodel.XSSFCell.setFormula(XSSFCell.java:580)
+	at org.apache.poi.xssf.usermodel.XSSFCell.setCellFormula(XSSFCell.java:556)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:103)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:43)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel01(ExcelGeneratorServiceImplTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2021-12-16 14:26:16,933 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:27:01,020 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 13268 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:27:01,023 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:27:05,229 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:27:05,522 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:27:06,027 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.195 seconds (JVM running for 9.02)
+2021-12-16 14:27:35,142 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:30:35,392 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 11108 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:30:35,402 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:30:39,609 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:30:39,835 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:30:40,368 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.113 seconds (JVM running for 8.978)
+2021-12-16 14:31:26,999 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:36:39,628 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 13940 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:36:39,631 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:36:45,096 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:36:45,459 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:36:46,788 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 9.318 seconds (JVM running for 14.259)
+2021-12-16 14:37:23,874 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:42:16,485 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 7220 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:42:16,491 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:42:19,921 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:42:20,167 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:42:20,926 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.8 seconds (JVM running for 9.367)
+2021-12-16 14:43:01,796 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:45:12,323 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 13760 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:45:12,337 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:45:19,331 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:45:19,597 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:45:20,443 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 9.682 seconds (JVM running for 11.596)
+2021-12-16 14:46:00,200 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:49:28,094 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 12596 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:49:28,111 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:49:32,533 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:49:32,788 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:49:33,321 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 7.426 seconds (JVM running for 10.455)
+2021-12-16 14:50:03,898 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : The specified formula '=IF(ISNA(INDEX(Existing!B:B,MATCH(C772,Existing!E:E,0))), "", INDEX(Existing!B:B,MATCH(C772,Existing!E:E,0)))' starts with an equals sign which is not allowed.
+org.apache.poi.ss.formula.FormulaParseException: The specified formula '=IF(ISNA(INDEX(Existing!B:B,MATCH(C772,Existing!E:E,0))), "", INDEX(Existing!B:B,MATCH(C772,Existing!E:E,0)))' starts with an equals sign which is not allowed.
+	at org.apache.poi.ss.formula.FormulaParser.expected(FormulaParser.java:268)
+	at org.apache.poi.ss.formula.FormulaParser.parseSimpleFactor(FormulaParser.java:1541)
+	at org.apache.poi.ss.formula.FormulaParser.percentFactor(FormulaParser.java:1494)
+	at org.apache.poi.ss.formula.FormulaParser.powerFactor(FormulaParser.java:1481)
+	at org.apache.poi.ss.formula.FormulaParser.Term(FormulaParser.java:1855)
+	at org.apache.poi.ss.formula.FormulaParser.additiveExpression(FormulaParser.java:1983)
+	at org.apache.poi.ss.formula.FormulaParser.concatExpression(FormulaParser.java:1967)
+	at org.apache.poi.ss.formula.FormulaParser.comparisonExpression(FormulaParser.java:1924)
+	at org.apache.poi.ss.formula.FormulaParser.intersectionExpression(FormulaParser.java:1897)
+	at org.apache.poi.ss.formula.FormulaParser.unionExpression(FormulaParser.java:1877)
+	at org.apache.poi.ss.formula.FormulaParser.parse(FormulaParser.java:2025)
+	at org.apache.poi.ss.formula.FormulaParser.parse(FormulaParser.java:170)
+	at org.apache.poi.xssf.usermodel.XSSFCell.setFormula(XSSFCell.java:580)
+	at org.apache.poi.xssf.usermodel.XSSFCell.setCellFormula(XSSFCell.java:556)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:115)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:43)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel01(ExcelGeneratorServiceImplTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2021-12-16 14:50:03,956 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:50:43,603 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 5588 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 14:50:43,606 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 14:50:48,259 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 14:50:48,550 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 14:50:49,561 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 7.287 seconds (JVM running for 10.103)
+2021-12-16 14:51:27,806 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:13:41,171 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 1076 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 15:13:41,171 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 15:13:44,575 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:13:44,776 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 15:13:45,139 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 4.958 seconds (JVM running for 7.312)
+2021-12-16 15:14:07,672 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Specified named range 'P' does not exist in the current workbook.
+org.apache.poi.ss.formula.FormulaParseException: Specified named range 'P' does not exist in the current workbook.
+	at org.apache.poi.ss.formula.FormulaParser.parseNonRange(FormulaParser.java:906)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeable(FormulaParser.java:582)
+	at org.apache.poi.ss.formula.FormulaParser.parseRangeExpression(FormulaParser.java:321)
+	at org.apache.poi.ss.formula.FormulaParser.parseSimpleFactor(FormulaParser.java:1536)
+	at org.apache.poi.ss.formula.FormulaParser.percentFactor(FormulaParser.java:1494)
+	at org.apache.poi.ss.formula.FormulaParser.powerFactor(FormulaParser.java:1481)
+	at org.apache.poi.ss.formula.FormulaParser.Term(FormulaParser.java:1855)
+	at org.apache.poi.ss.formula.FormulaParser.additiveExpression(FormulaParser.java:1983)
+	at org.apache.poi.ss.formula.FormulaParser.concatExpression(FormulaParser.java:1967)
+	at org.apache.poi.ss.formula.FormulaParser.comparisonExpression(FormulaParser.java:1924)
+	at org.apache.poi.ss.formula.FormulaParser.intersectionExpression(FormulaParser.java:1897)
+	at org.apache.poi.ss.formula.FormulaParser.unionExpression(FormulaParser.java:1877)
+	at org.apache.poi.ss.formula.FormulaParser.parse(FormulaParser.java:2025)
+	at org.apache.poi.ss.formula.FormulaParser.parse(FormulaParser.java:170)
+	at org.apache.poi.xssf.usermodel.XSSFCell.setFormula(XSSFCell.java:580)
+	at org.apache.poi.xssf.usermodel.XSSFCell.setCellFormula(XSSFCell.java:556)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:113)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:43)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel01(ExcelGeneratorServiceImplTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2021-12-16 15:14:07,735 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:21:21,977 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 7184 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 15:21:21,987 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 15:21:25,159 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:21:25,357 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 15:21:25,939 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.051 seconds (JVM running for 8.031)
+2021-12-16 15:21:58,670 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:37:57,725 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 3404 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 15:37:57,728 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 15:38:00,916 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:38:01,131 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 15:38:01,723 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.147 seconds (JVM running for 7.604)
+2021-12-16 15:38:29,973 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:47:47,517 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 5580 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 15:47:47,520 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 15:47:50,393 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 15:47:50,651 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 15:47:51,110 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 4.592 seconds (JVM running for 6.913)
+2021-12-16 15:48:19,680 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:28:45,210 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 6720 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 16:28:45,210 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 16:28:48,472 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:28:48,651 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 16:28:49,087 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.126 seconds (JVM running for 7.455)
+2021-12-16 16:29:13,625 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Cannot get a STRING value from a NUMERIC cell
+java.lang.IllegalStateException: Cannot get a STRING value from a NUMERIC cell
+	at org.apache.poi.xssf.usermodel.XSSFCell.typeMismatch(XSSFCell.java:1093)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getRichStringCellValue(XSSFCell.java:397)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getStringCellValue(XSSFCell.java:349)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:74)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:43)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel01(ExcelGeneratorServiceImplTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2021-12-16 16:29:13,673 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:37:53,981 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 12524 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 16:37:53,981 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 16:37:57,441 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:37:57,651 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 16:37:58,055 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.108 seconds (JVM running for 7.385)
+2021-12-16 16:38:38,651 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:41:58,587 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 7812 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 16:41:58,589 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 16:42:01,936 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:42:02,170 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 16:42:03,089 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.704 seconds (JVM running for 9.267)
+2021-12-16 16:42:34,126 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:54:10,990 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 8696 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 16:54:10,990 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 16:54:15,088 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:54:15,288 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 16:54:15,876 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.263 seconds (JVM running for 9.459)
+2021-12-16 16:54:45,319 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:54:54,937 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 8216 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 16:54:54,937 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 16:54:57,694 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 16:54:57,873 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 16:54:58,264 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 4.604 seconds (JVM running for 7.102)
+2021-12-16 16:55:44,682 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Cannot get a STRING value from a NUMERIC formula cell
+java.lang.IllegalStateException: Cannot get a STRING value from a NUMERIC formula cell
+	at org.apache.poi.xssf.usermodel.XSSFCell.typeMismatch(XSSFCell.java:1093)
+	at org.apache.poi.xssf.usermodel.XSSFCell.checkFormulaCachedValueType(XSSFCell.java:405)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getRichStringCellValue(XSSFCell.java:393)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getStringCellValue(XSSFCell.java:349)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.getAllLicenseKey(UsedLicenseServiceImpl.java:39)
+	at com.axisoft.collect.service.impl.ExistLicenseServiceImpl.insertExistData(ExistLicenseServiceImpl.java:122)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:42)
 	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
 	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel02(ExcelGeneratorServiceImplTest.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -51,16 +371,118 @@ java.lang.NullPointerException: null
 	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
 	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
 	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
-2021-09-29 16:16:56,251 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:17:42,153 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 15312 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:17:42,155 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:17:44,959 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:17:45,121 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:17:45,633 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 4.417 seconds (JVM running for 7.317)
-2021-09-29 16:18:24,020 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : null
-java.lang.NullPointerException: null
-	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:67)
-	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:40)
+2021-12-16 16:55:44,719 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:08:10,576 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 11556 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 17:08:10,579 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 17:08:14,122 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:08:14,369 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 17:08:14,888 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.439 seconds (JVM running for 9.674)
+2021-12-16 17:09:32,018 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 1020 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 17:09:32,037 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 17:09:35,835 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:09:36,036 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 17:09:36,640 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.944 seconds (JVM running for 9.145)
+2021-12-16 17:09:57,899 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Cannot get a FORMULA value from a STRING cell
+java.lang.IllegalStateException: Cannot get a FORMULA value from a STRING cell
+	at org.apache.poi.xssf.usermodel.XSSFCell.typeMismatch(XSSFCell.java:1093)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getCellFormula(XSSFCell.java:484)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getCellFormula(XSSFCell.java:471)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.getAllLicenseKey(UsedLicenseServiceImpl.java:39)
+	at com.axisoft.collect.service.impl.ExistLicenseServiceImpl.insertExistData(ExistLicenseServiceImpl.java:122)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:42)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel02(ExcelGeneratorServiceImplTest.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2021-12-16 17:09:57,940 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:10:25,196 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 12724 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 17:10:25,196 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 17:10:28,502 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:10:28,699 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 17:10:29,207 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.022 seconds (JVM running for 7.695)
+2021-12-16 17:10:50,234 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Cannot get a FORMULA value from a STRING cell
+java.lang.IllegalStateException: Cannot get a FORMULA value from a STRING cell
+	at org.apache.poi.xssf.usermodel.XSSFCell.typeMismatch(XSSFCell.java:1093)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getCellFormula(XSSFCell.java:484)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getCellFormula(XSSFCell.java:471)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.getAllLicenseKey(UsedLicenseServiceImpl.java:39)
+	at com.axisoft.collect.service.impl.ExistLicenseServiceImpl.insertExistData(ExistLicenseServiceImpl.java:122)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:42)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
+	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel02(ExcelGeneratorServiceImplTest.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2021-12-16 17:10:50,295 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:11:39,743 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 7164 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 17:11:39,759 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 17:11:43,430 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:11:43,733 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 17:11:44,330 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.616 seconds (JVM running for 8.223)
+2021-12-16 17:12:43,988 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : Cannot get a STRING value from a NUMERIC formula cell
+java.lang.IllegalStateException: Cannot get a STRING value from a NUMERIC formula cell
+	at org.apache.poi.xssf.usermodel.XSSFCell.typeMismatch(XSSFCell.java:1093)
+	at org.apache.poi.xssf.usermodel.XSSFCell.checkFormulaCachedValueType(XSSFCell.java:405)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getRichStringCellValue(XSSFCell.java:393)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getStringCellValue(XSSFCell.java:349)
+	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.getAllLicenseKey(UsedLicenseServiceImpl.java:39)
+	at com.axisoft.collect.service.impl.ExistLicenseServiceImpl.insertExistData(ExistLicenseServiceImpl.java:122)
+	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:42)
 	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
 	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel02(ExcelGeneratorServiceImplTest.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -101,88 +523,16 @@ java.lang.NullPointerException: null
 	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
 	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
 	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
-2021-09-29 16:18:24,163 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:19:26,316 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 8072 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:19:26,335 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:19:29,962 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:19:30,207 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:19:30,831 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.438 seconds (JVM running for 9.872)
-2021-09-29 16:20:17,629 ERROR [main] com.axisoft.collect.service.impl.ExistLicenseServiceImpl : null
-java.lang.NullPointerException: null
-	at com.axisoft.collect.service.impl.UsedLicenseServiceImpl.insertUsedData(UsedLicenseServiceImpl.java:67)
-	at com.axisoft.collect.service.impl.ExcelGeneratorServiceImpl.generateExcel(ExcelGeneratorServiceImpl.java:40)
-	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel(ExcelGeneratorServiceImplTest.java:67)
-	at test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest.testGenerateExcel02(ExcelGeneratorServiceImplTest.java:50)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
-	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
-	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
-	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
-	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
-	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
-	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
-	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
-2021-09-29 16:20:17,694 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:22:31,162 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 7276 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:22:31,176 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:22:36,889 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:22:37,171 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:22:37,760 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 10.309 seconds (JVM running for 18.046)
-2021-09-29 16:23:52,270 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:24:22,536 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 3852 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:24:22,540 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:24:26,366 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:24:26,626 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:24:27,277 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.136 seconds (JVM running for 9.556)
-2021-09-29 16:25:19,081 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:32:37,604 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 15076 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:32:37,616 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:32:41,713 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:32:41,954 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:32:42,621 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.736 seconds (JVM running for 16.896)
-2021-09-29 16:33:40,112 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:39:59,102 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 11412 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:39:59,106 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:40:03,404 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:40:03,646 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:40:04,221 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 6.876 seconds (JVM running for 10.487)
-2021-09-29 16:40:55,736 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:42:40,570 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 5648 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:42:40,625 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:42:46,289 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:42:46,524 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:42:47,369 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 8.838 seconds (JVM running for 13.444)
-2021-09-29 16:45:18,304 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:54:20,378 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 14888 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 16:54:20,439 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 16:54:26,385 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 16:54:26,717 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 16:54:27,492 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 9.65 seconds (JVM running for 14.154)
-2021-09-29 16:56:50,414 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
-2021-09-29 17:03:38,796 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 10076 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
-2021-09-29 17:03:38,855 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
-2021-09-29 17:03:43,504 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
-2021-09-29 17:03:43,713 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
-2021-09-29 17:03:44,145 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 8.277 seconds (JVM running for 12.705)
-2021-09-29 17:05:56,727 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:12:44,057 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:15:42,547 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 6720 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 17:15:42,563 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 17:15:45,415 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:15:45,562 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 17:15:45,968 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 4.358 seconds (JVM running for 6.7)
+2021-12-16 17:18:50,195 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:24:25,263 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Starting ExcelGeneratorServiceImplTest on Z-01P-00-0143 with PID 2996 (started by FaryHuo in C:\Users\faryhuo\Desktop\template\CollectHtmlData2Excel)
+2021-12-16 17:24:25,263 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : No active profile set, falling back to default profiles: default
+2021-12-16 17:24:28,895 INFO  [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-16 17:24:29,027 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2021-12-16 17:24:29,296 INFO  [main] test.com.axisoft.collect.service.impl.ExcelGeneratorServiceImplTest : Started ExcelGeneratorServiceImplTest in 5.067 seconds (JVM running for 8.043)
+2021-12-16 17:27:25,552 INFO  [SpringContextShutdownHook] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'

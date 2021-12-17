@@ -34,14 +34,14 @@ public class ExcelGeneratorServiceImplTest  {
 
     @Test
     public void testGenerateExcel01() throws IOException {
-        String inputExcelPath="C:\\Users\\faryhuo\\Desktop\\Company Software License (11).xlsx";
+        String inputExcelPath="D:\\temp\\Company Software License Test Template.xlsx";
         String outputExcelPath="D:\\temp\\excel_"+new Date().getTime()+".xlsx";
         testGenerateExcel(inputExcelPath,outputExcelPath);
     }
 
     @Test
     public void testGenerateExcel02() throws IOException {
-        String inputExcelPath="C:\\Users\\faryhuo\\Desktop\\Company Software License (11).xlsx";
+        String inputExcelPath="D:\\temp\\Company Software License Test Template.xlsx";
         String outputExcelPath="D:\\temp\\excel_"+new Date().getTime()+".xlsx";
         testGenerateExcel(inputExcelPath,outputExcelPath);
         for(int i=0;i<10;i++){

@@ -4,10 +4,7 @@ import com.axisoft.collect.entites.AssetCode;
 import com.axisoft.collect.entites.ComputerInfo;
 import com.axisoft.collect.entites.ExistLicense;
 import com.axisoft.collect.entites.LicenseInfo;
-import com.axisoft.collect.service.AllLicenseService;
-import com.axisoft.collect.service.AssetCodeService;
-import com.axisoft.collect.service.ExcelUtilsService;
-import com.axisoft.collect.service.ExistLicenseService;
+import com.axisoft.collect.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.slf4j.LoggerFactory;
@@ -35,7 +32,8 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
 
     @Autowired
     ExcelUtilsService excelUtilsService;
-
+    @Autowired
+    UsedLicenseService usedLicenseService;
     @Autowired
     AssetCodeService assetCodeService;
 
@@ -91,7 +89,8 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             String contianKey=encodeKey.replaceAll("XXXXX-","");
             for(int i=0;i<licenseInfoList.size();i++) {
                 LicenseInfo licenseInfo=licenseInfoList.get(i);
-                if(licenseInfo.getProductKey().endsWith(contianKey) && productName.contains(licenseInfo.getProductName())){
+                if(licenseInfo.getProductKey().endsWith(contianKey)
+                        && (productName.contains(licenseInfo.getProductName()) || StringUtils.isBlank(licenseInfo.getProductName()))){
                     return licenseInfo.getProductKey().trim();
                 }
             }
@@ -101,7 +100,8 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             String contianKey=encodeKey.replaceAll("-XXXXX","");
             for(int i=0;i<licenseInfoList.size();i++) {
                 LicenseInfo licenseInfo=licenseInfoList.get(i);
-                if(licenseInfo.getProductKey().startsWith(contianKey) && productName.contains(licenseInfo.getProductName())){
+                if(licenseInfo.getProductKey().startsWith(contianKey)
+                        && (productName.contains(licenseInfo.getProductName()) || StringUtils.isBlank(licenseInfo.getProductName()))){
                     return licenseInfo.getProductKey().trim();
                 }
             }
@@ -111,21 +111,22 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
         }
     }
 
+    Map<String, Integer> productKeyMap = new HashMap<>();
+
     @Override
     public List<ExistLicense>  insertExistData(List<ComputerInfo> computerInfos, Workbook workbook) throws IOException {
         try {
             Sheet existingSheet = workbook.getSheet(SHEET_NAME);
             maxNumber = deleteSameMachineRecord(computerInfos, existingSheet, workbook);
-            int currentTotalRow = existingSheet.getLastRowNum();
             List<LicenseInfo> licenseInfoList = allLicenseService.getAllLicenseKeyInfo(workbook);
-            int index = currentTotalRow + 1;
+            int index = (int)maxNumber;
             List<ExistLicense> existLicenseList = new ArrayList<>();
+            licenseInfoList.addAll(usedLicenseService.getAllLicenseKey(workbook));
             for (int j = 0; j < computerInfos.size(); j++) {
                 ComputerInfo computerInfo = computerInfos.get(j);
                 if (computerInfo.getSoftwareLicenses() == null) {
                     continue;
                 }
-                Map<String, Integer> productKeyMap = new HashMap<>();
                 for (String key : computerInfo.getSoftwareLicenses().keySet()) {
                     ExistLicense existLicense = insertRecord(workbook, existingSheet, licenseInfoList, index, computerInfo, productKeyMap, key);
                     existLicenseList.add(existLicense);
@@ -149,6 +150,7 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             CellStyle cellStyle = excelUtilsService.getCellStyle(workbook);
             for (int i = 0; i < 8; i++) {
                 Cell nCell = row.createCell(i);
+                //cellStyle.setAlignment(HorizontalAlignment.CENTER);
                 nCell.setCellStyle(cellStyle);
             }
             String productKey = computerInfo.getSoftwareLicenses().get(key);
@@ -171,7 +173,7 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             existLicense.setProductKey(encodeKey);
             row.getCell(3).setCellValue(key);
             row.getCell(4).setCellValue(encodeKey);
-            String pk = String.format("%s##%s##%s", computerInfo.getComputerName(), computerInfo.getWindowLogon(), encodeKey);
+            String pk = encodeKey;
             if (productKeyMap.containsKey(pk)) {
                 int number = productKeyMap.get(pk);
                 number++;
@@ -187,7 +189,13 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
             String foumula = String.format("IF(ISERROR(HYPERLINK(\"#Used!C\"&MATCH((E%d&B%d&F%d),Used!J:J,0),\"Y\")),\"\",HYPERLINK(\"#Used!C\"&MATCH((E%d&B%d&F%d),Used!J:J,0),\"Y\"))"
                     , rowIndex, rowIndex, rowIndex, rowIndex, rowIndex, rowIndex);
             row.getCell(6).setCellFormula(foumula);
+            //row.getCell(6).getCellStyle().setAlignment(HorizontalAlignment.CENTER);
             //row.getCell(7).setCellValue(productKey);
+            String comparisionFormulat = String.format("E%d&B%d&F%d", rowIndex, rowIndex, rowIndex);
+            if(row.getCell(9)==null){
+                row.createCell(9);
+            }
+            row.getCell(9).setCellFormula(comparisionFormulat);
             return existLicense;
         }catch (RuntimeException e){
             throw e;
@@ -201,7 +209,8 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
         try {
             int totalRow = existingSheet.getLastRowNum();
             List<Integer> needToDeleteRows = new ArrayList<>();
-            double maxNumber = 0;
+            List<List<Object>> oldData=new ArrayList<>();
+            int currentIndex=1;
             for (int i = 2; i <= totalRow; i++) {
                 Row row = existingSheet.getRow(i);
                 if (row == null) {
@@ -220,13 +229,9 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
                 if (row.getCell(2) != null) {
                     user = row.getCell(2).getStringCellValue();
                 }
-                if (maxNumber < no) {
-                    maxNumber = no;
-                }
                 boolean hasExistRecord = false;
                 if (StringUtils.isBlank(machineName) && StringUtils.isBlank(user)) {
                     needToDeleteRows.add(i);
-                    row.setZeroHeight(true);
                     continue;
                 }
                 for (int j = 0; j < computerInfos.size(); j++) {
@@ -250,19 +255,89 @@ public class ExistLicenseServiceImpl implements ExistLicenseService {
                 }
                 //row.setZeroHeight(true);
                 if (hasExistRecord) {
-                    row.setZeroHeight(true);
+                    //row.setZeroHeight(true);
                     needToDeleteRows.add(i);
+                }else{
+                    List<Object> list=new ArrayList<>();
+                    list.add(currentIndex);
+                    for(int j=1;j<=4;j++) {
+                        if (row.getCell(j) != null) {
+                            list.add(row.getCell(j).getStringCellValue());
+                        }else{
+                            list.add("");
+                        }
+                    }
+                    if (row.getCell(5) != null) {
+                        list.add(row.getCell(5).getNumericCellValue());
+                    }else{
+                        list.add("");
+                    }
+                    oldData.add(list);
+                    currentIndex++;
                 }
             }
-            for (int rowIndex = needToDeleteRows.size() - 1; rowIndex >= 0; rowIndex--) {
-                existingSheet.removeRow(existingSheet.getRow(needToDeleteRows.get(rowIndex)));
-                //existingSheet.getRow(needToDeleteRows.get(rowIndex)).setZeroHeight(true);
-                //excelUtilsService.removeRow(existingSheet,needToDeleteRows.get(rowIndex));
+
+            insertOldData(oldData,existingSheet,workbook);
+            for(int i=oldData.size()+2;i<totalRow;i++){
+                if(existingSheet.getRow(i)!=null) {
+                    existingSheet.removeRow(existingSheet.getRow(i));
+                }
             }
-            return maxNumber;
+
+            return oldData.size()+2;
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             throw new RuntimeException("Can not delete the same data in Existing sheet.");
+        }
+    }
+
+    private void insertOldData(List<List<Object>> oldData,Sheet existingSheet,Workbook workbook){
+        CellStyle cellStyle = excelUtilsService.getCellStyle(workbook);
+        //CellStyle centerCellStyle = excelUtilsService.getCellStyle(workbook,HorizontalAlignment.CENTER);
+        for(int i=0;i<oldData.size();i++){
+            int startIndex=2;
+            if(existingSheet.getRow(startIndex+i)==null){
+                existingSheet.createRow(startIndex+i);
+            }
+            Row row=existingSheet.getRow(startIndex+i);
+            for(int j=0;j<7;j++){
+                if(row.getCell(j)==null){
+                    row.createCell(j);
+                }
+                if(j==0) {
+                    row.getCell(j).setCellValue((Integer)oldData.get(i).get(j));
+                }
+                if(j>0 && j<=4) {
+                    row.getCell(j).setCellValue((String)oldData.get(i).get(j));
+                }
+                if(j==4){
+                    String pk = (String)oldData.get(i).get(4);
+                    if (productKeyMap.containsKey(pk)) {
+                        int number = productKeyMap.get(pk);
+                        number++;
+                        productKeyMap.put(pk, number);
+                    } else {
+                        productKeyMap.put(pk, 1);
+                    }
+                }
+                if(j==5){
+                    row.getCell(j).setCellValue((Double) oldData.get(i).get(j));
+                }
+                if(j==6) {
+                    int rowIndex = row.getRowNum() + 1;
+                    String foumula = String.format("IF(ISERROR(HYPERLINK(\"#Used!C\"&MATCH((E%d&B%d&F%d),Used!J:J,0),\"Y\")),\"\",HYPERLINK(\"#Used!C\"&MATCH((E%d&B%d&F%d),Used!J:J,0),\"Y\"))"
+                            , rowIndex, rowIndex, rowIndex, rowIndex, rowIndex, rowIndex);
+                    row.getCell(j).setCellFormula(foumula);
+                }
+                row.getCell(j).setCellStyle(cellStyle);
+
+            }
+            int rowIndex = row.getRowNum() + 1;
+            String comparisionFormulat = String.format("E%d&B%d&F%d", rowIndex, rowIndex, rowIndex);
+            if(row.getCell(9)==null){
+                row.createCell(9);
+            }
+            row.getCell(9).setCellFormula(comparisionFormulat);
         }
     }
 

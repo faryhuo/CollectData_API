@@ -50,14 +50,33 @@ public class ExcelUtilsServiceImpl implements ExcelUtilsService {
         return style;
     }
 
+    public CellStyle getCellStyle(Workbook workbook,HorizontalAlignment horizontalAlignment){
+        CellStyle style = workbook.createCellStyle();
+        Font font = workbook.createFont();
+        font.setFontName("Calibri");
+        font.setFontHeightInPoints((short)11);
+        font.setBold(false);
+        style.setFont(font);
+        style.setAlignment(horizontalAlignment);
+        return style;
+    }
+
+    boolean isDelRow=false;
 
 
-    public void removeRow(Sheet sheet, int rowIndex) {
-        if (rowIndex >= 0) {
-            sheet.removeRow(sheet.getRow(rowIndex));
-            if(rowIndex < sheet.getLastRowNum()) {
-                sheet.shiftRows(rowIndex + 1, sheet.getLastRowNum(), -1);
+    public void removeRow(Sheet sheet, int rowIndex, int count) {
+        int lastRowNum = sheet.getLastRowNum();
+        System.out.println(String.format("delete :%d,count :%d,lastRowNum: %d",rowIndex,-count,lastRowNum));
+        if(isDelRow && rowIndex+count<=lastRowNum-1 && (lastRowNum-rowIndex-count)>=count) {
+            sheet.shiftRows(rowIndex + count, lastRowNum-1, -1, true, false);
+        }else{
+            for(int i=0;i<count;i++){
+                if(sheet.getRow(rowIndex+i)!=null) {
+                    sheet.removeRow(sheet.getRow(rowIndex + i));
+                    //sheet.shiftRows(rowIndex + i+1, lastRowNum, -1, true, false);
+                }
             }
         }
+
     }
 }
